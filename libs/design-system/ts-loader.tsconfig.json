@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "*ts", "*.tsx"],
+  "exclude": ["node_modules", "dist", "webpack.config.base.js"]
+}

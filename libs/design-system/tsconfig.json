@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "allowImportingTsExtensions": false,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "*.ts", "*.tsx"],
+  "exclude": ["node_modules", "dist", "*.cjs"]
+}
