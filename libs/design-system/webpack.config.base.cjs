@@ -1,14 +1,18 @@
 const path = require("path");
+
 module.exports = {
   experiments: {
     outputModule: true,
   },
   entry: {
-    index: "./src/index.ts",
+    button: {
+      import: "./src/button/index.ts",
+      filename: "./button/[name].bundler.js",
+    },
   },
   output: {
     filename: "[name].bundler.js",
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "dist"),
     library: {
       type: "module",
     },
@@ -26,12 +30,21 @@ module.exports = {
             },
           },
         ],
+        exclude: /node_modules/i,
+        include: path.resolve(__dirname, "src"),
       },
+      // for tailwindcss when use local not externals
+      // {
+      //   test: /\.css$/i,
+      //   use: ["style-loader", "css-loader", "postcss-loader"],
+      //   include: path.resolve(__dirname, "src"),
+      // },
     ],
   },
   externals: {
     react: "react",
     "react-dom": "react-dom",
+    tailwindcss: "tailwindcss",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],

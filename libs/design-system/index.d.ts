@@ -1,3 +1,3 @@
-declare module "design-system-mui23" {
+declare module "design-system-tw" {
   export function Button(): JSX.Element;
 }

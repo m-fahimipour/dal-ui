@@ -2,7 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import {Button} from "design-system-mui23"
+import { Button } from "design-system-tw";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,7 +26,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
+      <p className="read-the-docs bg-amber-400">
         Click on the Vite and React logos to learn more
       </p>
       <Button />
