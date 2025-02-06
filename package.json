@@ -1,15 +1,31 @@
 {
   "name": "my-workspace",
   "version": "1.0.0",
+  "type": "module",
   "workspaces": [
     "./apps/*",
     "./libs/*"
   ],
+  "scripts": {
+    "lint": "eslint --fix ."
+  },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-check-file": "^3.0.0",
+    "eslint-plugin-perfectionist": "^4.8.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "typescript-eslint": "^8.23.0",
+    "typescript": "~5.6.2"
+  }
 }

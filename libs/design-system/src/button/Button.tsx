@@ -1,10 +1,17 @@
 import { useState } from "react";
 
-function Button() {
-  const [count, setCount] = useState(0);
+import type { IProps } from "./types";
+
+function Button({ isLoading }: IProps) {
+  const [count, setCount] = useState<number>(0);
   return (
-    <button className="bg-pink-300" onClick={() => setCount((c) => c + 1)}>
+    <button
+      className="bg-pink-500"
+      onClick={() => setCount((c: number) => c + 1)}
+    >
       button {count}
+
+      <div />
     </button>
   );
 }

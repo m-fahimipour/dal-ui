@@ -1,1 +1,1 @@
-export { Button } from "./dist/button.bundler";
+export { Button } from "./dist/button/button.bundler";
