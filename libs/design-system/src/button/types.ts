@@ -1,5 +1,11 @@
-interface IProps {
-  isLoading?: boolean;
-}
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-export type { IProps };
+import type { TSize } from "../types";
+
+type TButtonVariant = "text" | "filled" | "outlined";
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+  isLoading?: boolean;
+  size?: TSize;
+  variant?: TButtonVariant;
+}

@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { twJoin } from "tailwind-merge";
 
-import type { IProps } from "./types";
+import type { IButtonProps } from "./types";
 
-function Button({ isLoading }: IProps) {
-  const [count, setCount] = useState<number>(0);
+function Button({
+  children,
+  // size,
+  // variant,
+  // isLoading,
+  className,
+  ...otherProps
+}: IButtonProps): JSX.Element {
   return (
     <button
-      className="bg-pink-500"
-      onClick={() => setCount((c: number) => c + 1)}
+      {...otherProps}
+      className={twJoin("rounded-full w-[116px] h-12 bg-pink-600", className)}
     >
-      button {count}
-
-      <div />
+      {children}
     </button>
   );
 }
