@@ -1,0 +1,29 @@
+@theme {
+  /* primary color palette */
+  --color-primary-main: #6c5ce7;
+  --color-primary-1: #f4f8fe;
+  --color-primary-2: #e4ebfc;
+  --color-primary-3: #d0e0f9;
+  --color-primary-4: #bcd4f2;
+  --color-primary-5: #a9b8e3;
+  --color-primary-6: #8e9be3;
+  --color-primary-7: #7a7de3;
+  --color-primary-8: #6c5ce7;
+  --color-primary-9: #5a4cb4;
+  --color-primary-10: #4e3b9a;
+
+  /* secondary color palette */
+  --color-secondary-main: #e76c6c;
+  --color-secondary-1: #f9eeee;
+  --color-secondary-2: #f4e1e1;
+  --color-secondary-3: #f0d6d6;
+  --color-secondary-4: #edcfcf;
+  --color-secondary-5: #ebabab;
+  --color-secondary-6: #e88e8e;
+  --color-secondary-7: #e76c6c;
+  --color-secondary-8: #d06363;
+  --color-secondary-9: #c05a5a;
+  --color-secondary-10: #b05252;
+
+  /* background color palette */
+}

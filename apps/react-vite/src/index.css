@@ -1,1 +1,27 @@
+/* imports */
 @import "tailwindcss";
+@import "../../../node_modules/design-system-tw/src/settings/theme.css";
+
+/* fonts */
+@font-face {
+  font-family: poppins;
+  src: url("./assets/poppins_R.ttf") format("TrueType");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: nahid;
+  src: url("./assets/nahid_FD.ttf") format("TrueType");
+}
+
+@theme {
+  --font-*: initial;
+  --font-primary: nahid;
+  --font-secondary: poppins;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-secondary);
+  }
+}

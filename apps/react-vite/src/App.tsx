@@ -39,7 +39,9 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      <Button className="border border-amber-300">click me</Button>
+      <Button className="border border-amber-300 bg-secondary-main text-primary-4">
+        کلیک کنید!
+      </Button>
     </>
   );
 }
