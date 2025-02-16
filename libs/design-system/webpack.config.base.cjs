@@ -5,9 +5,17 @@ module.exports = {
     outputModule: true,
   },
   entry: {
-    button: {
-      import: "./src/button/index.ts",
-      filename: "./button/[name].bundler.js",
+    components: {
+      import: "./src/components/index.ts",
+      filename: "./components/[name].bundler.js",
+    },
+    theme: {
+      import: "./src/theme-provider/ThemeProvider.tsx",
+      filename: "./theme/theme-provider.js",
+    },
+    utils: {
+      import: "./src/utils/index.ts",
+      filename: "./utils/utils.js",
     },
   },
   output: {

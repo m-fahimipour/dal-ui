@@ -1,6 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-
-import type { TSize } from "../types";
+import type { TSize } from "../../types";
 
 type TButtonVariant = "text" | "filled" | "outlined";
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

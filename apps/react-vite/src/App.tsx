@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import { Button } from "design-system-tw";
-
+import { ThemeProvider } from "design-system-tw/theme";
+import { changeTheme } from "design-system-tw/utils";
 import reactLogo from "./assets/react.svg";
 
 import "./App.css";
@@ -12,8 +13,9 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <ThemeProvider>
       <div>
+        <button onClick={changeTheme}>change theme</button>
         <a href="https://vite.dev" rel="noreferrer" target="_blank">
           <img alt="Vite logo" className="logo" src={viteLogo} />
         </a>
@@ -39,10 +41,10 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      <Button className="border border-amber-300 bg-secondary-main text-primary-4">
+      <Button className="border border-amber-300 dark:bg-secondary-main text-primary-4">
         کلیک کنید!
       </Button>
-    </>
+    </ThemeProvider>
   );
 }
 

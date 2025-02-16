@@ -27,3 +27,5 @@
 
   /* background color palette */
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

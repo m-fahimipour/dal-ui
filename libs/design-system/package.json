@@ -8,6 +8,14 @@
     ".": {
       "import": "./index.js",
       "default": "./index.js"
+    },
+    "./theme": {
+      "import": "./dist/theme/theme-provider.js",
+      "default": "./dist/theme/theme-provider.js"
+    },
+    "./utils": {
+      "import": "./dist/utils/utils.js",
+      "default": "./dist/utils/utils.js"
     }
   },
   "scripts": {
