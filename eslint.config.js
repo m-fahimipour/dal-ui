@@ -231,7 +231,10 @@ export default tslint.config(
   },
   //  check folder name and file
   {
-    ignores: ["apps/react-vite/src/**/main.tsx"],
+    ignores: [
+      "apps/react-vite/src/**/main.tsx",
+      "libs/design-system/**/*.d.ts",
+    ],
     files: ["libs/**/src/**/*", "apps/**/src/**/*"],
     plugins: {
       "check-file": checkFile,
