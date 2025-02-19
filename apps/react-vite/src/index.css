@@ -1,6 +1,6 @@
 /* imports */
 @import "tailwindcss";
-@import "../../../node_modules/design-system-tw/src/settings/theme.css";
+@import "design-system-tw/theme-style/theme.css";
 
 /* fonts */
 @font-face {
