@@ -7,7 +7,10 @@
     "./libs/*"
   ],
   "scripts": {
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "app-vite": "npm run dev -w ./apps/react-vite",
+    "dev-dst": "npm run dev -w ./libs/design-system",
+    "build-dst": "npm run build -w ./libs/design-system"
   },
   "dependencies": {
     "react": "^18.3.1",
