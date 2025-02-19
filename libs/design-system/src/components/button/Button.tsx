@@ -1,6 +1,6 @@
 import { twJoin } from "tailwind-merge";
 
-import type { IButtonProps } from "./types";
+import type { IButtonProps } from "../../types/components/button/Button";
 
 function Button({
   children,

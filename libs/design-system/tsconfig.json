@@ -9,6 +9,6 @@
     // type
     "strictNullChecks": true
   },
-  "include": ["src", "*.ts", "*.tsx"],
+  "include": ["src", "*.ts", "*.tsx", "*.d.ts"],
   "exclude": ["node_modules", "dist", "*.cjs"]
 }

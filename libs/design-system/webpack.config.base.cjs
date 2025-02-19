@@ -1,17 +1,18 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   experiments: {
     outputModule: true,
   },
   entry: {
-    components: {
-      import: "./src/components/index.ts",
-      filename: "./components/[name].bundler.js",
+    button: {
+      import: "./src/components/button/index.ts",
+      filename: "./components/button/[name].bundler.js",
     },
     theme: {
-      import: "./src/theme-provider/ThemeProvider.tsx",
-      filename: "./theme/theme-provider.js",
+      import: "./src/theme/theme.ts",
+      filename: "./theme/theme.js",
     },
     utils: {
       import: "./src/utils/index.ts",
@@ -49,6 +50,30 @@ module.exports = {
       // },
     ],
   },
+
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/types/theme"),
+          to: path.resolve(__dirname, "dist/theme"), // default value is output.path
+        },
+        {
+          from: path.resolve(__dirname, "src/theme/theme.css"),
+          to: path.resolve(__dirname, "dist/theme"),
+        },
+        {
+          from: path.resolve(__dirname, "src/types/utils"),
+          to: path.resolve(__dirname, "dist/utils"),
+        },
+        {
+          from: path.resolve(__dirname, "src/types/components"),
+          to: path.resolve(__dirname, "dist/types"),
+        },
+      ],
+    }),
+  ],
+
   externals: {
     react: "react",
     "react-dom": "react-dom",

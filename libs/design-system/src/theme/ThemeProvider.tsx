@@ -1,6 +1,6 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, type ReactNode } from "react";
 
-export function ThemeProvider({ children }) {
+function ThemeProvider({ children }: { children: ReactNode[] }) {
   useLayoutEffect(() => {
     if (window) {
       const isDarkTheme = window.matchMedia(
@@ -20,3 +20,5 @@ export function ThemeProvider({ children }) {
 
   return <>{children}</>;
 }
+
+export default ThemeProvider;

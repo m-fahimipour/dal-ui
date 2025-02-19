@@ -1,17 +1,23 @@
 {
   "name": "design-system-tw",
   "version": "0.0.1",
-  "main": "index.js",
   "type": "module",
-  "module": "./index.js",
+  "private": "false",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
   "exports": {
     ".": {
       "import": "./index.js",
       "default": "./index.js"
     },
     "./theme": {
-      "import": "./dist/theme/theme-provider.js",
-      "default": "./dist/theme/theme-provider.js"
+      "import": "./dist/theme/theme.js",
+      "default": "./dist/theme/theme.js"
+    },
+    "./theme-style/theme.css": {
+      "import": "./dist/theme/theme.css",
+      "default": "./dist/theme/theme.css"
     },
     "./utils": {
       "import": "./dist/utils/utils.js",
@@ -32,6 +38,7 @@
     "@tailwindcss/postcss": "^4.0.3",
     "@types/react": "^19.0.1",
     "babel-loader": "^9.2.1",
+    "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "postcss": "^8.5.1",
     "postcss-loader": "^8.1.1",
