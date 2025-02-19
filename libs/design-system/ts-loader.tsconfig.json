@@ -6,5 +6,5 @@
     "jsx": "react-jsx"
   },
   "include": ["src", "*ts", "*.tsx"],
-  "exclude": ["node_modules", "dist", "webpack.config.base.js"]
+  "exclude": ["node_modules", "dist"]
 }
