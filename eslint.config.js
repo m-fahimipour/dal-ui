@@ -233,6 +233,7 @@ export default tslint.config(
   {
     ignores: [
       "apps/react-vite/src/**/main.tsx",
+      "apps/react-vite/**/*.d.ts",
       "libs/design-system/**/*.d.ts",
     ],
     files: ["libs/**/src/**/*", "apps/**/src/**/*"],
