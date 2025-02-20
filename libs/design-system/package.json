@@ -2,7 +2,7 @@
   "name": "design-system-tw",
   "version": "0.0.1",
   "type": "module",
-  "private": "false",
+  "private": false,
   "main": "index.js",
   "module": "index.js",
   "types": "index.d.ts",
@@ -24,6 +24,11 @@
       "default": "./dist/utils/utils.js"
     }
   },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "dist/"
+  ],
   "scripts": {
     "dev": "webpack serve --config webpack.config.dev.cjs",
     "build": "webpack --config webpack.config.prod.cjs"
