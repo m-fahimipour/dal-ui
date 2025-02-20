@@ -10,6 +10,10 @@ module.exports = {
       import: "./src/components/button/index.ts",
       filename: "./components/button/[name].bundler.js",
     },
+    typography: {
+      import: "./src/components/typography/index.ts",
+      filename: "./components/typography/[name].bundler.js",
+    },
     theme: {
       import: "./src/theme/theme.ts",
       filename: "./theme/theme.js",
@@ -68,7 +72,7 @@ module.exports = {
         },
         {
           from: path.resolve(__dirname, "src/types/components"),
-          to: path.resolve(__dirname, "dist/types"),
+          to: path.resolve(__dirname, "dist/types/"),
         },
       ],
     }),
