@@ -82,6 +82,7 @@ module.exports = {
     react: "react",
     "react-dom": "react-dom",
     tailwindcss: "tailwindcss",
+    "tailwind-merge": "tailwind-merge",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],

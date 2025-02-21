@@ -17,5 +17,8 @@
     "design-system-tw": "*",
     "tailwindcss": "^4.0.6",
     "vite": "^6.0.1"
+  },
+  "dependencies": {
+    "tailwind-merge": "^3.0.1"
   }
 }
