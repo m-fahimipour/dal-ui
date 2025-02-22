@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Button } from "design-system-tw";
+import { Button, Typography } from "design-system-tw";
 import { ThemeProvider } from "design-system-tw/theme";
 import { changeTheme } from "design-system-tw/utils";
 
@@ -39,8 +39,15 @@ function App() {
         </p>
       </div>
 
-      <p className="read-the-docs bg-amber-400">
+      <p className="bg-amber-400 [&_.Dalui-typography-root]:text-primary-main">
         Click on the Vite and React logos to learn more
+        <Typography component="p" variants="body2">
+          <Typography>تست شد</Typography>
+
+          <Typography component="h4" variants="body1">
+            سلام
+          </Typography>
+        </Typography>
       </p>
 
       <Button className="border border-amber-300 dark:bg-secondary-main text-primary-4">

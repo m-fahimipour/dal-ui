@@ -25,3 +25,14 @@
     font-family: var(--font-secondary);
   }
 }
+
+@layer components {
+  .body1 {
+    font-size: var(--text-xl);
+    font-weight: 500;
+  }
+  .body2 {
+    font-size: var(--text-lg);
+    font-weight: 500;
+  }
+}
