@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-import type { TFilterFalseValueKey } from "../global";
+import type { TAdaptiveBreakpointsArray, TFilterFalseValue } from "../global";
 
 export interface IButtonSize {
   "btn-small": true;
@@ -17,8 +17,12 @@ export interface IButtonVariant {
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   isLoading?: boolean;
-  size?: keyof TFilterFalseValueKey<IButtonSize>;
-  variant?: keyof TFilterFalseValueKey<IButtonVariant>;
+  size?:
+    | keyof TFilterFalseValue<IButtonSize>
+    | TAdaptiveBreakpointsArray<IButtonSize>;
+  variant?:
+    | keyof TFilterFalseValue<IButtonVariant>
+    | TAdaptiveBreakpointsArray<IButtonVariant>;
 }
 
 // final declare

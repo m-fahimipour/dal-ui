@@ -1,0 +1,14 @@
+@utility btn-small {
+  min-height: 36px;
+  min-width: 84px;
+}
+
+@utility btn-medium {
+  min-height: 40px;
+  min-width: 100px;
+}
+
+@utility btn-large {
+  min-height: 48px;
+  min-width: 116px;
+}

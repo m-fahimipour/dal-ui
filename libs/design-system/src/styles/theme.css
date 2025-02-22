@@ -26,6 +26,12 @@
   --color-secondary-10: #b05252;
 
   /* background color palette */
+
+  /* breakpoints */
+  --breakpoint-2xl: initial;
+  --breakpoint-max-2xl: initial;
+  --breakpoint-xxl: 96rem;
+  --breakpoint-max-xxl: 96rem;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

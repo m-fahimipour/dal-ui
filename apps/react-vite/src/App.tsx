@@ -50,7 +50,10 @@ function App() {
         </Typography>
       </p>
 
-      <Button className="border border-amber-300 dark:bg-secondary-main text-primary-4">
+      <Button
+        className="border border-amber-300 dark:bg-secondary-main text-primary-4 min-w-4xl!"
+        size={["md:btn-small", "lg:btn-large"]}
+      >
         کلیک کنید!
       </Button>
     </ThemeProvider>
