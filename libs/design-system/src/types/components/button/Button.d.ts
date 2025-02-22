@@ -1,13 +1,24 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import type { TSize } from "..";
 
-type TButtonVariant = "text" | "filled" | "outlined";
+import type { TFilterFalseValueKey } from "../global";
+
+export interface IButtonSize {
+  "btn-small": true;
+  "btn-medium": true;
+  "btn-large": true;
+}
+
+export interface IButtonVariant {
+  "btn-text": true;
+  "btn-contained": true;
+  "btn-outlined": true;
+}
 
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   isLoading?: boolean;
-  size?: TSize;
-  variant?: TButtonVariant;
+  size?: keyof TFilterFalseValueKey<IButtonSize>;
+  variant?: keyof TFilterFalseValueKey<IButtonVariant>;
 }
 
 // final declare
