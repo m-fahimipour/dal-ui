@@ -15,7 +15,7 @@ function Typography({
     component,
     {
       ...rest,
-      className: twJoin("Dalui-typography-root", className, variants),
+      className: twJoin("Dui-typography-root", className, variants),
     },
     children
   );
