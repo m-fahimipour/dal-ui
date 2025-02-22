@@ -15,14 +15,11 @@
       "import": "./dist/theme/theme.js",
       "default": "./dist/theme/theme.js"
     },
-    "./theme-style/theme.css": {
-      "import": "./dist/theme/theme.css",
-      "default": "./dist/theme/theme.css"
-    },
     "./utils": {
       "import": "./dist/utils/utils.js",
       "default": "./dist/utils/utils.js"
-    }
+    },
+    "./styles/global.css": "./dist/styles/global.css"
   },
   "files": [
     "index.js",

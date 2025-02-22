@@ -59,12 +59,12 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "src/types/theme"),
-          to: path.resolve(__dirname, "dist/theme"), // default value is output.path
+          from: path.resolve(__dirname, "src/styles"),
+          to: path.resolve(__dirname, "dist/styles"),
         },
         {
-          from: path.resolve(__dirname, "src/theme/theme.css"),
-          to: path.resolve(__dirname, "dist/theme"),
+          from: path.resolve(__dirname, "src/types/theme"),
+          to: path.resolve(__dirname, "dist/theme"), // default value is output.path
         },
         {
           from: path.resolve(__dirname, "src/types/utils"),
