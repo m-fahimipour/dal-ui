@@ -4,8 +4,8 @@ import type { IButtonProps } from "../../types/components/button/Button";
 
 function Button({
   children,
-  // size,
-  // variant,
+  size,
+  variant,
   // isLoading,
   className,
   ...otherProps
@@ -13,7 +13,7 @@ function Button({
   return (
     <button
       {...otherProps}
-      className={twJoin("rounded-full w-[116px] h-12 bg-pink-600", className)}
+      className={twJoin("rounded-full bg-pink-600", className, size, variant)}
     >
       {children}
     </button>

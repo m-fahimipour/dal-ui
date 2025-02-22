@@ -3,6 +3,8 @@
 // declare module "design-system-tw" {
 //   export function Button(props: IButtonProps): JSX.Element;
 // }
+export * from "./dist/types/global";
+
 export { default as Button } from "./dist/types/button/Button";
 export * from "./dist/types/button/Button";
 
