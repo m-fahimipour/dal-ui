@@ -1,12 +1,12 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, RefObject } from "react";
 
 type TComponent = "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 type TBaseElement<T extends TComponent> = T extends "p"
   ? HTMLParagraphElement
   : T extends "span"
-  ? HTMLSpanElement
-  : HTMLHeadingElement;
+    ? HTMLSpanElement
+    : HTMLHeadingElement;
 
 interface IBaseTypography<T extends TComponent>
   extends HTMLAttributes<TBaseElement<T>> {}
@@ -20,10 +20,11 @@ export interface ITypography<T extends TComponent = "span">
   variants?: keyof ITypographyVariants extends never
     ? string
     : keyof ITypographyVariants;
+  refComponent?: RefObject<TBaseElement<T> | undefined | null>;
 }
 
 declare const Typography: <T extends TComponent>(
-  props: ITypography<T>
+  props: ITypography<T>,
 ) => JSX.Element;
 
 export default Typography;

@@ -9,6 +9,7 @@ function Typography({
   children,
   variants,
   className,
+  refComponent,
   ...rest
 }: ITypography): JSX.Element {
   return createElement(
@@ -16,8 +17,9 @@ function Typography({
     {
       ...rest,
       className: twJoin("Dui-typography-root", className, variants),
+      ref: refComponent,
     },
-    children
+    children,
   );
 }
 
