@@ -12,3 +12,14 @@
   min-height: 48px;
   min-width: 116px;
 }
+
+@layer components {
+  .btn-base {
+  }
+
+  .btn-contained {
+    @apply bg-primary-main hover:bg-primary-9 text-white transition-[background-color];
+
+    @apply dark:bg-secondary-main dark:hover:bg-secondary-8;
+  }
+}
