@@ -1,11 +1,14 @@
-import { twJoin } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 
 import type { IButtonProps } from "../../types/components/button/Button";
+import RippleEffect from "./components/RippleEffect";
 
 function Button({
   children,
-  size,
-  variant,
+  size = "btn-medium",
+  variant = "btn-contained",
+  hasRippleEffect = true,
+  rippleProps,
   // isLoading,
   className,
   ...otherProps
@@ -13,9 +16,17 @@ function Button({
   return (
     <button
       {...otherProps}
-      className={twJoin("rounded-full bg-pink-600", className, size, variant)}
+      className={twMerge(
+        "Dui-Button-root",
+        "relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-1",
+        className,
+        size,
+        variant,
+      )}
     >
       {children}
+
+      {hasRippleEffect && <RippleEffect {...rippleProps} />}
     </button>
   );
 }

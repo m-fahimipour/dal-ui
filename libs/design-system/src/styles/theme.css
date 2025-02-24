@@ -32,6 +32,26 @@
   --breakpoint-max-2xl: initial;
   --breakpoint-xxl: 96rem;
   --breakpoint-max-xxl: 96rem;
+
+  /* default setting */
+  --default-transition-duration: 250ms;
+
+  /* animation */
+  --animate-ripple: ripple 1s ease;
+
+  @keyframes ripple {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    30% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(4);
+    }
+  }
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
