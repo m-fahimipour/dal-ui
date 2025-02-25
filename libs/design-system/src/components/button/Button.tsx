@@ -20,13 +20,19 @@ function Button({
         "Dui-Button-root",
         "relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-1",
         className,
-        size,
-        variant,
+        [variant, size],
       )}
     >
       {children}
 
-      {hasRippleEffect && <RippleEffect {...rippleProps} />}
+      {hasRippleEffect && (
+        <RippleEffect
+          {...(variant != "btn-contained" && {
+            bgColor: "bg-primary-7 dark:bg-secondary-7",
+          })}
+          {...rippleProps}
+        />
+      )}
     </button>
   );
 }
