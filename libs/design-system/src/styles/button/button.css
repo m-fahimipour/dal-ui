@@ -14,12 +14,21 @@
 }
 
 @layer components {
-  .btn-base {
-  }
-
   .btn-contained {
     @apply bg-primary-main hover:bg-primary-9 text-white transition-[background-color];
 
     @apply dark:bg-secondary-main dark:hover:bg-secondary-8;
+  }
+
+  .btn-outlined {
+    @apply text-primary-main border-primary-main hover:bg-primary-1 border-2 bg-transparent transition-[background-color];
+
+    @apply dark:text-secondary-main dark:border-secondary-main dark:hover:bg-secondary-1;
+  }
+
+  .btn-text {
+    @apply text-primary-main hover:bg-primary-1 bg-transparent transition-[background-color];
+
+    @apply dark:text-secondary-main dark:hover:bg-secondary-1;
   }
 }
