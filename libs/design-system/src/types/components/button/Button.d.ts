@@ -22,14 +22,16 @@ export interface IButtonVariant {
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   isLoading?: boolean;
-  hasRippleEffect?: boolean;
-  rippleProps?: IRippleProps;
   size?:
     | keyof TFilterFalseValue<IButtonSize>
     | TAdaptiveBreakpointsArray<IButtonSize>;
   variant?:
     | keyof TFilterFalseValue<IButtonVariant>
     | TAdaptiveBreakpointsArray<IButtonVariant>;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+  hasRippleEffect?: boolean;
+  rippleProps?: IRippleProps;
 }
 
 // final declare

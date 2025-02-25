@@ -5,12 +5,13 @@ import RippleEffect from "./components/RippleEffect";
 
 function Button({
   children,
+  className,
   size = "btn-medium",
   variant = "btn-contained",
+  startIcon,
+  endIcon,
   hasRippleEffect = true,
   rippleProps,
-  // isLoading,
-  className,
   ...otherProps
 }: IButtonProps): JSX.Element {
   return (
@@ -19,11 +20,16 @@ function Button({
       className={twMerge(
         "Dui-Button-root",
         "relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-1",
+        startIcon || endIcon ? "gap-2" : "",
         className,
         [variant, size],
       )}
     >
+      {startIcon}
+
       {children}
+
+      {endIcon}
 
       {hasRippleEffect && (
         <RippleEffect
