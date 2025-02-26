@@ -43,7 +43,7 @@ export function useRippleEffect({
 
       span.classList.add(
         "inline-block",
-        ...(bgColor?.split(" ") ?? ["bg-white"]),
+        ...(bgColor?.split(" ") || ["bg-white"]),
         "absolute",
         "opacity-0",
         "rounded-full",
