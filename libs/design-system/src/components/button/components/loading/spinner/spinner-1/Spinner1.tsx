@@ -1,12 +1,17 @@
 import { twJoin } from "tailwind-merge";
 
-export function Spinner1(): JSX.Element {
+interface ISpinner1 {
+  className?: string;
+}
+
+export function Spinner1({ className }: ISpinner1): JSX.Element {
   return (
     <>
       <span
         className={twJoin(
           "Dui-spinner1-root",
-          "aspect-square h-1/2 rounded-full border-2 border-white border-l-transparent",
+          "aspect-square h-1/2 rounded-full border-2 border-l-transparent",
+          className || "border-white",
         )}
       />
 

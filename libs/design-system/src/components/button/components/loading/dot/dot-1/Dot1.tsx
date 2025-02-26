@@ -1,4 +1,9 @@
-export function Dot1(): JSX.Element {
+import { twJoin } from "tailwind-merge";
+
+interface IDot1 {
+  className?: string;
+}
+export function Dot1({ className }: IDot1): JSX.Element {
   return (
     <>
       <div className="Dui-dot-loader-root relative aspect-square h-1/2">
@@ -10,9 +15,12 @@ export function Dot1(): JSX.Element {
 
           return (
             <span
-              className="absolute inset-0 after:absolute after:top-0 after:left-0 after:inline-block after:aspect-square after:h-1/5 after:rounded-full after:bg-white"
               key={index}
               style={style}
+              className={twJoin(
+                "absolute inset-0 after:absolute after:top-0 after:left-0 after:inline-block after:aspect-square after:h-1/5 after:rounded-full",
+                className || "after:bg-white",
+              )}
             />
           );
         })}

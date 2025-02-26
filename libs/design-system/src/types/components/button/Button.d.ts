@@ -19,9 +19,14 @@ export interface IButtonVariant {
   "btn-outlined": true;
 }
 
+interface ILoadingProps {
+  component?: ReactNode;
+  type?: "spinner1" | "dot1";
+  className?: HTMLAttributes<HTMLSpanElement>["className"];
+}
+
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  isLoading?: boolean;
   size?:
     | keyof TFilterFalseValue<IButtonSize>
     | TAdaptiveBreakpointsArray<IButtonSize>;
@@ -30,6 +35,8 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | TAdaptiveBreakpointsArray<IButtonVariant>;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  isLoading?: boolean;
+  loadingProps?: ILoadingProps;
   hasRippleEffect?: boolean;
   rippleProps?: IRippleProps;
 }
