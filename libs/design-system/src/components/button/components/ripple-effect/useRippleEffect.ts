@@ -7,11 +7,9 @@ interface IUseRippleEffectReturn {
 
 interface IUseRippleEffectProps {
   ripplePosition?: "center" | "float";
-  bgColor?: string;
 }
 
 export function useRippleEffect({
-  bgColor,
   ripplePosition,
 }: IUseRippleEffectProps): IUseRippleEffectReturn {
   const rippleRef: RefObject<HTMLSpanElement | null> =
@@ -42,8 +40,8 @@ export function useRippleEffect({
       }
 
       span.classList.add(
+        "Dui-Ripple-root",
         "inline-block",
-        ...(bgColor?.split(" ") || ["bg-white"]),
         "absolute",
         "opacity-0",
         "rounded-full",

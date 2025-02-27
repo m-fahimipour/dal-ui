@@ -5,7 +5,6 @@ import type { TAdaptiveBreakpointsArray, TFilterFalseValue } from "../global";
 export type TLoadingType = "line-spinner" | "dot-spinner"
 
 export interface IRippleProps {
-  bgColor?: string;
   ripplePosition?: "center" | "float";
   className?: HTMLAttributes<HTMLSpanElement>["className"];
 }

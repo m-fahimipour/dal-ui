@@ -13,7 +13,7 @@
   --color-primary-10: #4e3b9a;
 
   /* secondary color palette */
-  --color-secondary-main: #e76c6c;
+  --color-secondary-main: #d06363;
   --color-secondary-1: #f9eeee;
   --color-secondary-2: #f4e1e1;
   --color-secondary-3: #f0d6d6;
@@ -26,6 +26,17 @@
   --color-secondary-10: #b05252;
 
   /* background color palette */
+
+  /* ripple button background color */
+  --color-ripple-btn-contained-light:var(--color-white);
+  --color-ripple-btn-contained-dark:var(--color-white);
+
+  --color-ripple-btn-outlined-light:var(--color-primary-main);
+  --color-ripple-btn-outlined-dark:var(--color-secondary-main);
+
+  --color-ripple-btn-text-light:var(--color-primary-main);
+  --color-ripple-btn-text-dark:var(--color-secondary-main);
+
 
   /* breakpoints */
   --breakpoint-2xl: initial;

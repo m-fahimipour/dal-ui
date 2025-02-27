@@ -5,18 +5,17 @@ import { Typography } from "../../../typography";
 import { useRippleEffect } from "./useRippleEffect";
 
 function RippleEffect({
-  bgColor,
   ripplePosition,
   className,
 }: IRippleProps): JSX.Element {
-  const { rippleRef, onClick } = useRippleEffect({ ripplePosition, bgColor });
+  const { rippleRef, onClick } = useRippleEffect({ ripplePosition });
 
   return (
     <Typography
       component="span"
       refComponent={rippleRef}
       className={twJoin(
-        "Dui-ripple-root absolute inset-0",
+        "Dui-Ripple-wrapper absolute inset-0",
         className ?? "rounded-full",
       )}
       onClick={onClick}

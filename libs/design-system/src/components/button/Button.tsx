@@ -17,16 +17,19 @@ function Button({
   },
   hasRippleEffect = true,
   rippleProps,
+  disabled,
   ...otherProps
 }: IButtonProps): JSX.Element {
-  const {loadingComponent} = useButton({loadingProps})  
+  const { loadingComponent } = useButton({ loadingProps })
 
   return (
     <button
       {...otherProps}
       className={twMerge(
         "Dui-Button-root",
+        disabled && "Dui-Button-disabled",
         "relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-1 transition-colors select-none",
+        disabled && "cursor-auto",
         startIcon || endIcon ? "gap-2" : "",
         className,
         isLoading && "text-transparent",
@@ -68,11 +71,8 @@ function Button({
           </div>
         ))}
 
-      {hasRippleEffect && (
+      {hasRippleEffect && !disabled && (
         <RippleEffect
-          {...(variant != "btn-contained" && {
-            bgColor: "bg-primary-7 dark:bg-secondary-7",
-          })}
           {...rippleProps}
         />
       )}

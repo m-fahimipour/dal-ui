@@ -18,17 +18,30 @@
     @apply bg-primary-main hover:bg-primary-9 text-white;
 
     @apply dark:bg-secondary-main dark:hover:bg-secondary-8;
+
+    & .Dui-Ripple-root { 
+      @apply bg-ripple-btn-contained-light dark:bg-ripple-btn-contained-dark;
+    }
   }
 
   .btn-outlined {
     @apply text-primary-main border-primary-main hover:bg-primary-1 border-2 bg-transparent;
 
     @apply dark:text-secondary-main dark:border-secondary-main dark:hover:bg-secondary-1;
+
+    & .Dui-Ripple-root { 
+      @apply bg-ripple-btn-outlined-light dark:bg-ripple-btn-outlined-dark;
+    }
   }
 
   .btn-text {
     @apply text-primary-main hover:bg-primary-1 bg-transparent;
 
     @apply dark:text-secondary-main dark:hover:bg-secondary-1;
+
+    & .Dui-Ripple-root { 
+      @apply bg-ripple-btn-text-light dark:bg-ripple-btn-text-dark;
+    }
   }
+
 }
