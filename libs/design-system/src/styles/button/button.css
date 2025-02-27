@@ -19,6 +19,10 @@
 
     @apply dark:bg-secondary-main dark:hover:bg-secondary-8;
 
+    &.Dui-Button-disabled {
+      @apply bg-disabled-1 text-disabled-2;
+    }
+
     & .Dui-Ripple-root { 
       @apply bg-ripple-btn-contained-light dark:bg-ripple-btn-contained-dark;
     }
@@ -29,6 +33,10 @@
 
     @apply dark:text-secondary-main dark:border-secondary-main dark:hover:bg-secondary-1;
 
+    &.Dui-Button-disabled {
+      @apply border-disabled-1 hover:bg-transparent text-disabled-2;
+    }
+
     & .Dui-Ripple-root { 
       @apply bg-ripple-btn-outlined-light dark:bg-ripple-btn-outlined-dark;
     }
@@ -38,6 +46,10 @@
     @apply text-primary-main hover:bg-primary-1 bg-transparent;
 
     @apply dark:text-secondary-main dark:hover:bg-secondary-1;
+
+    &.Dui-Button-disabled {
+      @apply hover:bg-transparent text-disabled-2;
+    }
 
     & .Dui-Ripple-root { 
       @apply bg-ripple-btn-text-light dark:bg-ripple-btn-text-dark;

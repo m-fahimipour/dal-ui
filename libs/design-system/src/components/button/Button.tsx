@@ -25,15 +25,16 @@ function Button({
   return (
     <button
       {...otherProps}
+      disabled={disabled}
       className={twMerge(
         "Dui-Button-root",
         disabled && "Dui-Button-disabled",
+        [variant, size],
         "relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-1 transition-colors select-none",
         disabled && "cursor-auto",
         startIcon || endIcon ? "gap-2" : "",
         className,
         isLoading && "text-transparent",
-        [variant, size],
       )}
     >
       {startIcon && (

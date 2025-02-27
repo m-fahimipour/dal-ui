@@ -27,6 +27,10 @@
 
   /* background color palette */
 
+  /* disabled color palette */
+  --color-disabled-1:#1D1B201E;
+  --color-disabled-2:#1D1B2060;
+
   /* ripple button background color */
   --color-ripple-btn-contained-light:var(--color-white);
   --color-ripple-btn-contained-dark:var(--color-white);
