@@ -14,16 +14,16 @@ export function useButton({ loadingProps }: IUseButtonProps): IUseButtonReturn {
     const [loadingComponent, setLoadingComponent] = useState<ReactNode>();
 
     useLayoutEffect(() => {
-        if (loadingProps?.type == "spinner1") {
-            import("./components/loading/line-spinner/LineSpinner")
+        if (loadingProps?.type == "line-spinner") {
+            import(/* @vite-ignore */ "./components/loading/line-spinner/LineSpinner")
                 .then((components) =>
                     setLoadingComponent(
                         <components.LineSpinner className={loadingProps.className ?? ""} />,
                     ),
                 )
                 .catch(() => { });
-        } else if (loadingProps?.type == "dot1") {
-            import("./components/loading/dot-spinner/DotSpinner")
+        } else if (loadingProps?.type == "dot-spinner") {
+            import(/* @vite-ignore */ "./components/loading/dot-spinner/DotSpinner")
                 .then((components) =>
                     setLoadingComponent(
                         <components.DotSpinner className={loadingProps.className ?? ""} />,

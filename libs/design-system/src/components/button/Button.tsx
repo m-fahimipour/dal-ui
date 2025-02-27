@@ -13,7 +13,7 @@ function Button({
   endIcon,
   isLoading,
   loadingProps = {
-    type: "spinner1",
+    type: "line-spinner",
   },
   hasRippleEffect = true,
   rippleProps,

@@ -2,6 +2,8 @@ import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
 import type { TAdaptiveBreakpointsArray, TFilterFalseValue } from "../global";
 
+export type TLoadingType = "line-spinner" | "dot-spinner"
+
 export interface IRippleProps {
   bgColor?: string;
   ripplePosition?: "center" | "float";
@@ -21,7 +23,7 @@ export interface IButtonVariant {
 
 interface ILoadingProps {
   component?: ReactNode;
-  type?: "spinner1" | "dot1";
+  type?: TLoadingType;
   className?: HTMLAttributes<HTMLSpanElement>["className"];
 }
 
