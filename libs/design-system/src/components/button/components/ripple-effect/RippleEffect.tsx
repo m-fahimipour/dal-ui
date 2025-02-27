@@ -1,7 +1,7 @@
 import { twJoin } from "tailwind-merge";
 
-import type { IRippleProps } from "../../../types/components/button/Button";
-import { Typography } from "../../typography";
+import type { IRippleProps } from "../../../../types/components/button/Button";
+import { Typography } from "../../../typography";
 import { useRippleEffect } from "./useRippleEffect";
 
 function RippleEffect({

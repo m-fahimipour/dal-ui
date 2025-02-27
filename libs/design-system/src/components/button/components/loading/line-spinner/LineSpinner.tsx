@@ -1,10 +1,10 @@
 import { twJoin } from "tailwind-merge";
 
-interface ISpinner1 {
+interface ILineSpinner {
   className?: string;
 }
 
-export function Spinner1({ className }: ISpinner1): JSX.Element {
+export function LineSpinner({ className }: ILineSpinner): JSX.Element {
   return (
     <>
       <span

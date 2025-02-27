@@ -1,9 +1,9 @@
 import { twJoin } from "tailwind-merge";
 
-interface IDot1 {
+interface IDotSpinner {
   className?: string;
 }
-export function Dot1({ className }: IDot1): JSX.Element {
+export function DotSpinner({ className }: IDotSpinner): JSX.Element {
   return (
     <>
       <div className="Dui-dot-loader-root relative aspect-square h-1/2">
