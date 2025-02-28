@@ -2,7 +2,7 @@ import { createElement } from "react";
 
 import { twJoin } from "tailwind-merge";
 
-import type { ITypography } from "../../types/components/typography/Typography";
+import type { ITypographyProps } from "../../types/components/typography/Typography";
 
 function Typography({
   component = "span",
@@ -11,12 +11,12 @@ function Typography({
   className,
   refComponent,
   ...rest
-}: ITypography): JSX.Element {
+}: ITypographyProps): JSX.Element {
   return createElement(
     component,
     {
       ...rest,
-      className: twJoin("Dui-typography-root", className, variants),
+      className: twJoin("Dui-Typography-root", className, variants),
       ref: refComponent,
     },
     children,

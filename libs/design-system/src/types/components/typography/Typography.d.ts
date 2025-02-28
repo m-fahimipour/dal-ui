@@ -13,7 +13,7 @@ interface IBaseTypography<T extends TComponent>
 
 export interface ITypographyVariants {}
 
-export interface ITypography<T extends TComponent = "span">
+export interface ITypographyProps<T extends TComponent = "span">
   extends IBaseTypography<T> {
   component?: T;
   children?: ReactNode | ReactNode[];
@@ -24,7 +24,7 @@ export interface ITypography<T extends TComponent = "span">
 }
 
 declare const Typography: <T extends TComponent>(
-  props: ITypography<T>,
+  props: ITypographyProps<T>,
 ) => JSX.Element;
 
 export default Typography;
