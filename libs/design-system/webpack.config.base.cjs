@@ -14,6 +14,10 @@ module.exports = {
       import: "./src/components/typography/index.ts",
       filename: "./components/typography/[name].bundler.js",
     },
+    block: {
+      import: "./src/components/block/index.ts",
+      filename: "./components/block/[name].bundler.js",
+    },
     theme: {
       import: "./src/theme/theme.ts",
       filename: "./theme/theme.js",

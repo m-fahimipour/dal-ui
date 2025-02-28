@@ -10,3 +10,6 @@ export * from "./dist/types/button/Button";
 
 export { default as Typography } from "./dist/types/typography/Typography";
 export * from "./dist/types/typography/Typography";
+
+export { default as Block } from "./dist/types/block/Block";
+export * from "./dist/types/block/Block";
