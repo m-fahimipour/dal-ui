@@ -16,3 +16,6 @@ export * from "./dist/types/block/Block";
 
 export { default as Checkbox } from "./dist/types/checkbox/Checkbox";
 export * from "./dist/types/checkbox/Checkbox";
+
+export { default as FormLabel } from "./dist/types/form-label/form-label";
+export * from "./dist/types/form-label/form-label";

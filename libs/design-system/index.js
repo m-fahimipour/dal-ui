@@ -5,3 +5,5 @@ export { Typography } from "./dist/components/typography/typography.bundler";
 export { Block } from "./dist/components/block/block.bundler"
 
 export { Checkbox } from "./dist/components/checkbox/checkbox.bundler"
+
+export { FormLabel } from "./dist/components/form-label/formLabel.bundler"

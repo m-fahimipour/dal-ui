@@ -22,6 +22,10 @@ module.exports = {
       import: "./src/components/checkbox/index.ts",
       filename: "./components/checkbox/[name].bundler.js"
     },
+    formLabel: {
+      import: "./src/components/form-label/index.ts",
+      filename: "./components/form-label/[name].bundler.js"
+    },
     theme: {
       import: "./src/theme/theme.ts",
       filename: "./theme/theme.js",
