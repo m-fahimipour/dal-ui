@@ -18,6 +18,10 @@ module.exports = {
       import: "./src/components/block/index.ts",
       filename: "./components/block/[name].bundler.js",
     },
+    checkbox: {
+      import: "./src/components/checkbox/index.ts",
+      filename: "./components/checkbox/[name].bundler.js"
+    },
     theme: {
       import: "./src/theme/theme.ts",
       filename: "./theme/theme.js",

@@ -25,22 +25,38 @@
   --color-secondary-9: #c05a5a;
   --color-secondary-10: #b05252;
 
+  /* info color pallet */
+  --color-info-main: #0096c7;
+  --color-info-1: #caf0f8;
+  --color-info-2: #ade8f4;
+  --color-info-3: #90e0ef;
+  --color-info-4: #48cae4;
+  --color-info-5: #00b4d8;
+  --color-info-6: #0096c7;
+  --color-info-7: #0077b6;
+  --color-info-8: #023e8a;
+  --color-info-9: #03045e;
+
   /* background color palette */
+  --color-surface-1: #fff;
+  --color-surface-3: #49454f;
+  --color-surface-10: #1d1b20;
 
   /* disabled color palette */
-  --color-disabled-1:#1D1B201E;
-  --color-disabled-2:#1D1B2060;
+  --color-disabled-1: #1d1b201e; /* opacity 0.12 */
+  --color-disabled-2: #1d1b2060; /* opacity 0.38 */
+
+  /* other colors */
 
   /* ripple button background color */
-  --color-ripple-btn-contained-light:var(--color-white);
-  --color-ripple-btn-contained-dark:var(--color-white);
+  --color-ripple-btn-contained-light: var(--color-white);
+  --color-ripple-btn-contained-dark: var(--color-white);
 
-  --color-ripple-btn-outlined-light:var(--color-primary-main);
-  --color-ripple-btn-outlined-dark:var(--color-secondary-main);
+  --color-ripple-btn-outlined-light: var(--color-primary-main);
+  --color-ripple-btn-outlined-dark: var(--color-secondary-main);
 
-  --color-ripple-btn-text-light:var(--color-primary-main);
-  --color-ripple-btn-text-dark:var(--color-secondary-main);
-
+  --color-ripple-btn-text-light: var(--color-primary-main);
+  --color-ripple-btn-text-dark: var(--color-secondary-main);
 
   /* breakpoints */
   --breakpoint-2xl: initial;

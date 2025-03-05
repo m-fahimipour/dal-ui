@@ -13,3 +13,6 @@ export * from "./dist/types/typography/Typography";
 
 export { default as Block } from "./dist/types/block/Block";
 export * from "./dist/types/block/Block";
+
+export { default as Checkbox } from "./dist/types/checkbox/Checkbox";
+export * from "./dist/types/checkbox/Checkbox";
