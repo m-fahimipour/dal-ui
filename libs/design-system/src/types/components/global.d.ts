@@ -19,7 +19,7 @@ export type TExtractStringKeys<T extends object> = {
   [key in keyof T]: key extends string ? key : never;
 }[keyof T];
 
-export type TAdaptiveBreakpoints<
+export type TAdaptiveBreakpointsObject<
   IValues extends object,
   Breakpoints extends object = IBreakpoints
 > = {
