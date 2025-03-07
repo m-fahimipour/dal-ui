@@ -2,7 +2,7 @@ export type TFilterFalseValue<T extends object> = {
   [key in keyof T as T[key] extends true ? key : never]: T[key];
 };
 
-export interface IBreakpoints {
+interface IDefaultBreakpoints {
   sm: true;
   md: true;
   lg: true;
@@ -14,6 +14,8 @@ export interface IBreakpoints {
   "max-xl": true;
   "max-xxl": false;
 }
+
+export interface IBreakpoints extends IDefaultBreakpoints{}
 
 export type TExtractStringKeys<T extends object> = {
   [key in keyof T]: key extends string ? key : never;
@@ -29,4 +31,4 @@ export type TAdaptiveBreakpointsObject<
 export type TAdaptiveBreakpointsArray<
   IValues extends object,
   Breakpoints extends object = IBreakpoints
-> = `${TExtractStringKeys<Breakpoints>}:${TExtractStringKeys<IValues>}`[];
+> = `${TExtractStringKeys<Breakpoints>}:${TExtractStringKeys<TFilterFalseValue<IValues>>}`[];

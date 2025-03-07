@@ -11,7 +11,10 @@ type TBaseElement<T extends TComponent> = T extends "p"
 interface IBaseTypography<T extends TComponent>
   extends HTMLAttributes<TBaseElement<T>> {}
 
-export interface ITypographyVariants {}
+interface IDefaultTypographyVariants {}
+
+export interface ITypographyVariants extends IDefaultTypographyVariants {
+}
 
 export interface ITypographyProps<T extends TComponent = "span">
   extends IBaseTypography<T> {

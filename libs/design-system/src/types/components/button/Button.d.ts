@@ -8,17 +8,23 @@ export interface IRippleProps {
   ripplePosition?: "center" | "float";
   className?: HTMLAttributes<HTMLSpanElement>["className"];
 }
-export interface IButtonSize {
+
+interface IDefaultButtonSize {
   "btn-small": true;
   "btn-medium": true;
   "btn-large": true;
 }
 
-export interface IButtonVariant {
+export interface IButtonSize extends IDefaultButtonSize {}
+
+
+interface IDefaultButtonVariant {
   "btn-text": true;
   "btn-contained": true;
   "btn-outlined": true;
 }
+
+export interface IButtonVariant extends IDefaultButtonVariant{}
 
 interface ILoadingProps {
   component?: ReactNode;
