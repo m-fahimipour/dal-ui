@@ -9,7 +9,7 @@ function FormLabel({
   control,
   label,
   componentsProps,
-  labelPosition = "right",
+  labelPosition = "end",
   disabled,
   checked,
   onChange,
@@ -21,8 +21,8 @@ function FormLabel({
       : key]: string;
   } = useMemo(() => {
     return {
-      left: "flex-row-reverse gap-2",
-      right: "gap-2",
+      start: "flex-row-reverse gap-2",
+      end: "gap-2",
       top: "flex-col-reverse gap-2",
       bottom: "flex-col gap-2",
     };
@@ -33,16 +33,17 @@ function FormLabel({
       {...labelProps}
       className={twJoin(
         "Dui-FormLabel-root",
-        disabled && "Dui-disabled",
+        (disabled || control.props.disabled) && "Dui-disabled",
+        (checked || control.props.checked) && "Dui-checked",
         "inline-flex items-center",
         positionLabelStyles[labelPosition],
         labelProps.className,
       )}
     >
       {cloneElement(control, {
-        disabled,
-        onChange,
-        checked,
+        ...(disabled && {disabled}),
+        ...(onChange && {onChange}),
+        ...(checked && {checked})
       })}
 
       {typeof label === "string" ? (
@@ -50,14 +51,15 @@ function FormLabel({
           {...componentsProps?.typography}
           className={twJoin(
             "Dui-label-root",
-            "cursor-pointer transition-colors",
+            "transition-colors",
             componentsProps?.typography?.className,
-            disabled && "text-disabled-2",
+            (disabled || control.props.disabled) ? "text-disabled-2" : "cursor-pointer",
           )}
         >
           {label}
         </Typography>
       ) : (
+        // TODO => حتما در داکیومنت مشخص شود که در صورت کامپوننت بود عنوان، رنگ (text-disabled-2) داده شود.
         label
       )}
     </label>

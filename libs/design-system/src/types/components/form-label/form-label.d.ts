@@ -14,7 +14,7 @@ export interface IFormLabel
   componentsProps?: {
     typography?: ITypographyProps;
   };
-  labelPosition?: "top" | "bottom" | "left" | "right";
+  labelPosition?: "top" | "bottom" | "start" | "end";
   // input props
   disabled?: boolean;
   onChange?: InputHTMLAttributes<HTMLInputElement>["onChange"];
