@@ -19,6 +19,7 @@ export interface IFormLabel
   disabled?: boolean;
   onChange?: InputHTMLAttributes<HTMLInputElement>["onChange"];
   checked?: InputHTMLAttributes<HTMLInputElement>["checked"];
+  isIndeterminate?: boolean;
 }
 
 declare const FormLabel: (props: IFormLabel) => JSX.Element;

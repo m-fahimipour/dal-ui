@@ -10,9 +10,11 @@ function FormLabel({
   label,
   componentsProps,
   labelPosition = "end",
+  // input props
   disabled,
   checked,
   onChange,
+  isIndeterminate,
   ...labelProps
 }: IFormLabel): JSX.Element {
   const positionLabelStyles: {
@@ -43,7 +45,8 @@ function FormLabel({
       {cloneElement(control, {
         ...(disabled && {disabled}),
         ...(onChange && {onChange}),
-        ...(checked && {checked})
+        ...(checked && {checked}),
+        ...(isIndeterminate && {isIndeterminate})
       })}
 
       {typeof label === "string" ? (
