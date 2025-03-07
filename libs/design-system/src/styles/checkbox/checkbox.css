@@ -1,0 +1,14 @@
+@utility cb-small {
+    width:18px;
+    height:18px;
+}
+
+@utility cb-medium {
+    width:22px;
+    height:22px;
+}
+
+@utility cb-large {
+    width:26px;
+    height:26px;
+}
