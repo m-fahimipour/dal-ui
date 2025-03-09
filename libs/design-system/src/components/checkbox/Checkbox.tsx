@@ -14,11 +14,10 @@ function Checkbox({
   return (
     <Block
       component="div"
-      role="label"
       className={twJoin(
         "Dui-Checkbox-root",
         "relative overflow-hidden rounded-xs",
-        size
+        size,
       )}
     >
       <Block
@@ -38,34 +37,49 @@ function Checkbox({
           )}
         />
 
+        <Block
+          className={twJoin(
+            "Dui-Icon-root",
+            "absolute inset-[-2px] rounded-xs transition-colors",
+            inputProps.disabled &&
+              !inputProps.checked &&
+              isIndeterminate &&
+              "bg-disabled-2",
+            !inputProps.checked &&
+              isIndeterminate &&
+              "bg-primary-main dark:bg-secondary-main",
+            inputProps.disabled &&
+              !isIndeterminate &&
+              "peer-checked:bg-disabled-2",
+            (!isIndeterminate || inputProps.checked) &&
+              "peer-checked:bg-primary-main dark:peer-checked:bg-secondary-main",
+          )}
+        >
+          {/* checked icon */}
+          {checkedIcon ?? (
+            <Block
+              component="span"
+              className={twJoin(
+                "Dui-Checked-icon-root",
+                "absolute top-[45%] left-1/2 h-[55%] w-[30%] -translate-1/2 scale-[1.7] rotate-45 border-r-2 border-b-2 border-white opacity-0 transition-all group-has-checked/icon:scale-[1] group-has-checked/icon:opacity-100",
+              )}
+            />
+          )}
 
-        <Block className={twJoin("Dui-Icon-root",
-                  "absolute inset-[-2px] rounded-xs transition-colors",
-                  inputProps.disabled && !inputProps.checked && isIndeterminate && "bg-disabled-2",
-                  (!inputProps.checked && isIndeterminate) && "bg-primary-main dark:bg-secondary-main",
-                  inputProps.disabled && !isIndeterminate && "peer-checked:bg-disabled-2",
-                  (!isIndeterminate || inputProps.checked) && "peer-checked:bg-primary-main dark:peer-checked:bg-secondary-main")}>
-            {/* checked icon */}
-            {
-              checkedIcon ?? (
-                              <Block component="span" className={twJoin("Dui-Checked-icon-root",
-                                "absolute top-[45%] left-1/2 h-[55%] w-[30%] -translate-1/2 scale-[1.7] rotate-45 border-r-2 border-b-2 border-white opacity-0 transition-all group-has-checked/icon:scale-[1] group-has-checked/icon:opacity-100")}/>
-              )
-            }
-            
-
-            {/* indeterminate icon */}
-            {
-              isActiveIndeterminate && (indeterminateIcon ?? (
-                <Block component="span" className={twJoin(
+          {/* indeterminate icon */}
+          {isActiveIndeterminate &&
+            (indeterminateIcon ?? (
+              <Block
+                component="span"
+                className={twJoin(
                   "Dui-Indeterminate-icon-root",
-              "absolute top-1/2 left-1/2 -translate-1/2 opacity-0 h-[8%] w-[45%] transition-all bg-white scale-[1.7]",
-              (!inputProps.checked && isIndeterminate) && "opacity-100 scale-[1]"
-            )}/>
-              ))
-            }
-            
-
+                  "absolute top-1/2 left-1/2 h-[8%] w-[45%] -translate-1/2 scale-[1.7] bg-white opacity-0 transition-all",
+                  !inputProps.checked &&
+                    isIndeterminate &&
+                    "scale-[1] opacity-100",
+                )}
+              />
+            ))}
         </Block>
       </Block>
     </Block>
