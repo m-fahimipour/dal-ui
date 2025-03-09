@@ -13,10 +13,9 @@ interface IBaseTypography<T extends TComponent>
 
 interface IDefaultTypographyVariants {}
 
-export interface ITypographyVariants extends IDefaultTypographyVariants {
-}
+export interface ITypographyVariants extends IDefaultTypographyVariants {}
 
-export interface ITypographyProps<T extends TComponent = "span">
+export interface ITypographyProps<T extends TComponent = TComponent>
   extends IBaseTypography<T> {
   component?: T;
   children?: ReactNode | ReactNode[];
