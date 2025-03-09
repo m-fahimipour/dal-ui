@@ -19,3 +19,5 @@ export * from "./dist/types/checkbox/Checkbox";
 
 export { default as FormLabel } from "./dist/types/form-label/form-label";
 export * from "./dist/types/form-label/form-label";
+
+export { default as Accordion } from "./dist/types/accordion/accordion";

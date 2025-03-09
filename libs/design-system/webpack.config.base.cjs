@@ -26,6 +26,10 @@ module.exports = {
       import: "./src/components/form-label/index.ts",
       filename: "./components/form-label/[name].bundler.js"
     },
+    accordion: {
+      import: "./src/components/accordion/index.ts",
+      filename: "./components/accordion/[name].bundler.js"
+    },
     theme: {
       import: "./src/theme/theme.ts",
       filename: "./theme/theme.js",
