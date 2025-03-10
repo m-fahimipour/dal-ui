@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
+import type { IBase } from "../common";
 import type { TAdaptiveBreakpointsArray, TFilterFalseValue } from "../global";
 
-export type TLoadingType = "line-spinner" | "dot-spinner"
+export type TLoadingType = "line-spinner" | "dot-spinner";
 
 export interface IRippleProps {
   ripplePosition?: "center" | "float";
@@ -17,14 +18,13 @@ interface IDefaultButtonSize {
 
 export interface IButtonSize extends IDefaultButtonSize {}
 
-
 interface IDefaultButtonVariant {
   "btn-text": true;
   "btn-contained": true;
   "btn-outlined": true;
 }
 
-export interface IButtonVariant extends IDefaultButtonVariant{}
+export interface IButtonVariant extends IDefaultButtonVariant {}
 
 interface ILoadingProps {
   component?: ReactNode;
@@ -32,7 +32,9 @@ interface ILoadingProps {
   className?: HTMLAttributes<HTMLSpanElement>["className"];
 }
 
-export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    IBase {
   children: ReactNode;
   size?:
     | keyof TFilterFalseValue<IButtonSize>

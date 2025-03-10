@@ -7,6 +7,7 @@ import { useButton } from "./useButton";
 function Button({
   children,
   className,
+  duiCn,
   size = "btn-medium",
   variant = "btn-contained",
   startIcon,
@@ -26,9 +27,11 @@ function Button({
     <button
       {...otherProps}
       disabled={disabled}
+      type="button"
       className={twMerge(
         "Dui-Button-root",
         disabled && "Dui-Button-disabled",
+        duiCn,
         [variant, size],
         "relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-1 transition-colors select-none disabled:cursor-auto",
         startIcon || endIcon ? "gap-2" : "",
