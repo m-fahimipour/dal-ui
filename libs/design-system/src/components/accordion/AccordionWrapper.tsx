@@ -1,15 +1,11 @@
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  useState,
-  type ReactNode,
-} from "react";
+import { useMemo, useState } from "react";
 
 import { twJoin } from "tailwind-merge";
 
 import type { IAccordionWrapperProps } from "../../types/components/accordion/accordion-wrapper";
 import { Block } from "../block";
+import { AccordionContextProvider } from "./context/AccordionContext";
+import type { IValueAccordionContext } from "./context/type";
 
 function AccordionWrapper({
   children,
@@ -23,38 +19,34 @@ function AccordionWrapper({
     Boolean(defaultIsExpanded),
   );
 
-  function handlerExpanded(): void {
-    if (typeof isExpanded == "undefined") {
-      setIsExpandedInner((isPrev: boolean) => !isPrev);
-    } else {
-      onChange?.(!isExpanded);
-    }
-  }
+  const contextValue: IValueAccordionContext = useMemo(() => {
+    return {
+      isExpanded: isExpanded || isExpandedInner,
+      handlerExpanded(): void {
+        if (typeof isExpanded == "undefined") {
+          setIsExpandedInner((isPrev: boolean) => !isPrev);
+        } else {
+          onChange?.(!isExpanded);
+        }
+      },
+    };
+  }, [isExpanded, isExpandedInner]);
 
   return (
-    <Block
-      {...accordionWrapperProps}
-      className={twJoin(
-        "Dui-AccordionWrapper-root",
-        disabled && "Dui-disabled",
-        (isExpanded || isExpandedInner) && "Dui-Expanded",
-        "flex flex-col",
-        accordionWrapperProps.className,
-      )}
-    >
-      {Children.map(children, (child: ReactNode, index: number) => {
-        if (isValidElement<HTMLElement>(child))
-          return cloneElement<any>(
-            child,
-            index == 0
-              ? {
-                  isExpanded: isExpanded ?? isExpandedInner,
-                  handlerExpanded,
-                }
-              : { isExpanded: isExpanded ?? isExpandedInner },
-          );
-      })}
-    </Block>
+    <AccordionContextProvider value={contextValue}>
+      <Block
+        {...accordionWrapperProps}
+        className={twJoin(
+          "Dui-AccordionWrapper-root",
+          disabled && "Dui-disabled",
+          (isExpanded || isExpandedInner) && "Dui-Expanded",
+          "flex flex-col",
+          accordionWrapperProps.className,
+        )}
+      >
+        {children}
+      </Block>
+    </AccordionContextProvider>
   );
 }
 
