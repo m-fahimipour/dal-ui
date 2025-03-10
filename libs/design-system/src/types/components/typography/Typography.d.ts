@@ -1,4 +1,6 @@
-import type { HTMLAttributes, ReactNode, RefObject } from "react";
+import type { HTMLAttributes, ReactNode, RefAttributes } from "react";
+
+import type { IBase } from "../common";
 
 type TComponent = "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -16,13 +18,14 @@ interface IDefaultTypographyVariants {}
 export interface ITypographyVariants extends IDefaultTypographyVariants {}
 
 export interface ITypographyProps<T extends TComponent = TComponent>
-  extends IBaseTypography<T> {
+  extends IBaseTypography<T>,
+    IBase {
   component?: T;
-  children?: ReactNode | ReactNode[];
-  variants?: keyof ITypographyVariants extends never
+  children?: ReactNode;
+  variant?: keyof ITypographyVariants extends never
     ? string
     : keyof ITypographyVariants;
-  refComponent?: RefObject<TBaseElement<T> | undefined | null>;
+  refComponent?: RefAttributes<TBaseElement<T>>["ref"];
 }
 
 declare const Typography: <T extends TComponent>(

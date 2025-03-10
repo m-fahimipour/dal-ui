@@ -7,8 +7,9 @@ import type { ITypographyProps } from "../../types/components/typography/Typogra
 function Typography({
   component = "span",
   children,
-  variants,
+  variant,
   className,
+  duiCn,
   refComponent,
   ...rest
 }: ITypographyProps): JSX.Element {
@@ -16,7 +17,7 @@ function Typography({
     component,
     {
       ...rest,
-      className: twJoin("Dui-Typography-root", className, variants),
+      className: twJoin("Dui-Typography-root", duiCn, className, variant),
       ref: refComponent,
     },
     children,
