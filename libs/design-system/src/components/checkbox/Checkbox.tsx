@@ -1,5 +1,7 @@
 import { twJoin } from "tailwind-merge";
 
+import type { JSX } from "react";
+
 import type { ICheckboxProps } from "../../types/components/checkbox/Checkbox";
 import { Block } from "../block";
 
