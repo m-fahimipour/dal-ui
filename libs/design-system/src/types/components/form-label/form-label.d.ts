@@ -3,16 +3,17 @@ import type {
   LabelHTMLAttributes,
   ReactElement,
   ReactNode,
+  JSX,
 } from "react";
 
-import type { ITypographyProps } from "../typography/Typography";
+import type { TTypographyProps } from "../typography/Typography";
 
 export interface IFormLabel
   extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
   label: ReactNode;
   control: ReactElement<InputHTMLAttributes<HTMLInputElement>>;
   componentsProps?: {
-    typography?: ITypographyProps;
+    typography?: TTypographyProps;
   };
   labelPosition?: "top" | "bottom" | "start" | "end";
   // input props

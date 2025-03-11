@@ -1,4 +1,4 @@
-import { cloneElement, useMemo } from "react";
+import { cloneElement, useMemo, type JSX } from "react";
 
 import { twJoin } from "tailwind-merge";
 
@@ -15,6 +15,7 @@ function FormLabel({
   checked,
   onChange,
   isIndeterminate,
+  // 
   ...labelProps
 }: IFormLabel): JSX.Element {
   const positionLabelStyles: {
@@ -43,10 +44,10 @@ function FormLabel({
       )}
     >
       {cloneElement(control, {
-        ...(disabled && {disabled}),
-        ...(onChange && {onChange}),
-        ...(checked && {checked}),
-        ...(isIndeterminate && {isIndeterminate})
+        ...(disabled && { disabled }),
+        ...(onChange && { onChange }),
+        ...(checked && { checked }),
+        ...(isIndeterminate && { isIndeterminate }),
       })}
 
       {typeof label === "string" ? (
@@ -56,7 +57,9 @@ function FormLabel({
             "Dui-label-root",
             "transition-colors",
             componentsProps?.typography?.className,
-            (disabled || control.props.disabled) ? "text-disabled-2" : "cursor-pointer",
+            disabled || control.props.disabled
+              ? "text-disabled-2"
+              : "cursor-pointer",
           )}
         >
           {label}
