@@ -1,10 +1,15 @@
-import type { AllHTMLAttributes, HTMLElementType, ReactNode } from "react";
+import type { JSX } from "react";
 
-export interface IBlockProps extends AllHTMLAttributes<HTMLElement> {
-    children?: ReactNode;
-    component?: HTMLElementType;
-}
+import type { IBase } from "../common";
+import type { TElementAttributes } from "../global";
 
-declare const Block: (props: IBlockProps) => JSX.Element;
+export type TBlockProps<
+  T extends keyof HTMLElementTagNameMap = keyof HTMLElementTagNameMap,
+> = {
+  component?: T;
+} & TElementAttributes<T> &
+  IBase;
+
+declare const Block: (props: TBlockProps) => JSX.Element;
 
 export default Block;
