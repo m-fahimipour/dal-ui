@@ -1,7 +1,11 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import type { JSX, HTMLAttributes, ReactNode } from "react";
 
 import type { IBase } from "../common";
-import type { TAdaptiveBreakpointsArray, TFilterFalseValue } from "../global";
+import type {
+  TAdaptiveBreakpointsArray,
+  TElementAttributes,
+  TFilterFalseValue,
+} from "../global";
 
 export type TLoadingType = "line-spinner" | "dot-spinner";
 
@@ -32,9 +36,7 @@ interface ILoadingProps {
   className?: HTMLAttributes<HTMLSpanElement>["className"];
 }
 
-export interface IButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    IBase {
+export type TButtonProps = {
   children: ReactNode;
   size?:
     | keyof TFilterFalseValue<IButtonSize>
@@ -48,9 +50,10 @@ export interface IButtonProps
   loadingProps?: ILoadingProps;
   hasRippleEffect?: boolean;
   rippleProps?: IRippleProps;
-}
+} & TElementAttributes<"button"> &
+  IBase;
 
 // final declare
-declare const Button: (IButtonProps: IButtonProps) => JSX.Element;
+declare const Button: (IButtonProps: TButtonProps) => JSX.Element;
 
 export default Button;

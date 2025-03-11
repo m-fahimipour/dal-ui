@@ -1,6 +1,8 @@
 import { twJoin, twMerge } from "tailwind-merge";
 
-import type { IButtonProps } from "../../types/components/button/Button";
+import type { JSX } from "react";
+
+import type { TButtonProps } from "../../types/components/button/Button";
 import RippleEffect from "./components/ripple-effect/RippleEffect";
 import { useButton } from "./useButton";
 
@@ -20,7 +22,7 @@ function Button({
   rippleProps,
   disabled,
   ...otherProps
-}: IButtonProps): JSX.Element {
+}: TButtonProps): JSX.Element {
   const { loadingComponent } = useButton({ loadingProps });
 
   return (

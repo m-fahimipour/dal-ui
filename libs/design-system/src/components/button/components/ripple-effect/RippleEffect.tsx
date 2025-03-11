@@ -1,5 +1,7 @@
 import { twJoin } from "tailwind-merge";
 
+import type { JSX } from "react";
+
 import type { IRippleProps } from "../../../../types/components/button/Button";
 import { Typography } from "../../../typography";
 import { useRippleEffect } from "./useRippleEffect";
@@ -13,7 +15,7 @@ function RippleEffect({
   return (
     <Typography
       component="span"
-      refComponent={rippleRef}
+      ref={rippleRef}
       className={twJoin(
         "Dui-Ripple-wrapper absolute inset-0",
         className ?? "rounded-full",
