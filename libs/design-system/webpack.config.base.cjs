@@ -30,6 +30,10 @@ module.exports = {
       import: "./src/components/accordion/index.ts",
       filename: "./components/accordion/[name].bundler.js"
     },
+    collapse: {
+      import: "./src/components/collapse/index.ts",
+      filename: "./components/collapse/[name].bundler.js"
+    },
     theme: {
       import: "./src/theme/theme.ts",
       filename: "./theme/theme.js",

@@ -9,3 +9,5 @@ export { Checkbox } from "./dist/components/checkbox/checkbox.bundler";
 export { FormLabel } from "./dist/components/form-label/formLabel.bundler";
 
 export { Accordion } from "./dist/components/accordion/accordion.bundler";
+
+export { Collapse } from "./dist/components/collapse/collapse.bundler"
