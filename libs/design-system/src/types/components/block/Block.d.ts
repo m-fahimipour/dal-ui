@@ -4,7 +4,7 @@ import type { IBase } from "../common";
 import type { TElementAttributes } from "../global";
 
 export type TBlockProps<
-  T extends keyof HTMLElementTagNameMap = keyof HTMLElementTagNameMap,
+  T extends Exclude<keyof HTMLElementTagNameMap,"table"> = Exclude<keyof HTMLElementTagNameMap,"table">,
 > = {
   component?: T;
 } & TElementAttributes<T> &
