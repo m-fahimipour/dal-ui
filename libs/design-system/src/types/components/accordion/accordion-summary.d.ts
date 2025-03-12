@@ -1,15 +1,15 @@
-import type { ReactNode } from "react";
+import type { ReactNode, JSX } from "react";
 
-import type { IButtonProps } from "../button/Button";
-import type { ITypographyProps } from "../typography/Typography";
+import type { TButtonProps } from "../button/Button";
+import type { TTypographyProps } from "../typography/Typography";
 
 export interface IAccordionSummaryProps {
   children?: ReactNode;
   expandedIcon?: ReactNode;
   componentsProps?: {
-    typography?: ITypographyProps;
-    button?: IButtonProps;
-    expandedIcon?: ITypographyProps;
+    typography?: TTypographyProps;
+    button?: TButtonProps;
+    expandedIcon?: TTypographyProps;
   };
 }
 

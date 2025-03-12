@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-import type { IBlockProps } from "../block/Block";
+import type { TBlockProps } from "../block/Block";
 
-export interface IAccordionWrapperProps extends Omit<IBlockProps, "onChange"> {
+export interface IAccordionWrapperProps extends Omit<TBlockProps, "onChange"> {
   children: ReactNode;
   isExpanded?: boolean;
   defaultIsExpanded?: boolean;

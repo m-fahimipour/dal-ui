@@ -1,12 +1,12 @@
 import { twJoin, twMerge } from "tailwind-merge";
 
-import type { MouseEvent } from "react";
+import type { MouseEvent, JSX } from "react";
 
-import type { IAccordionSummaryProps } from "../../types/components/accordion/accordion-summary";
-import { Button } from "../button";
-import { Typography } from "../typography";
-import { useAccordionContext } from "./context/AccordionContext";
-import type { IValueAccordionContext } from "./context/type";
+import type { IAccordionSummaryProps } from "../../../types/components/accordion/accordion-summary";
+import { Button } from "../../button";
+import { Typography } from "../../typography";
+import { useAccordionContext } from "../context/AccordionContext";
+import type { IValueAccordionContext } from "../context/type";
 
 function AccordionSummary({
   children,
@@ -19,12 +19,13 @@ function AccordionSummary({
     <h3 className="Dui-Accordion-heading">
       <Button
         {...componentsProps?.button}
+        disabled={componentsProps?.button?.disabled ?? value.disabled}
         hasRippleEffect={componentsProps?.button?.hasRippleEffect ?? false}
         variant={componentsProps?.button?.variant ?? "btn-text"}
         aria-expanded={
           componentsProps?.button?.["aria-expanded"] ?? value.isExpanded
         }
-        className={twMerge(
+        className={twJoin(
           "w-full justify-between rounded-[0px] hover:bg-transparent",
           componentsProps?.button?.className,
         )}

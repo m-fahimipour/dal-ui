@@ -1,8 +1,6 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
-import AccordionDetails from "./AccordionDetails";
-import AccordionSummary from "./AccordionSummary";
-import AccordionWrapper from "./AccordionWrapper";
+import { AccordionWrapper, AccordionSummary, AccordionDetails } from ".";
 
 function Accordion({ i }: { i: ReactNode }) {
   // const [isExpanded, setIsExpanded] = useState<boolean>(false);
