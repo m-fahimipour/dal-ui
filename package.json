@@ -13,15 +13,16 @@
     "build:dst": "npm run build -w ./libs/design-system"
   },
   "dependencies": {
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "eslint": "^9.19.0",
     "eslint-plugin-check-file": "^3.0.0",
     "eslint-plugin-perfectionist": "^4.8.0",
@@ -29,6 +30,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.23.0"
   }
