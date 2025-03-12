@@ -1,5 +1,7 @@
 import { twJoin } from "tailwind-merge";
 
+import type { JSX } from "react";
+
 interface ILineSpinner {
   className?: string;
 }
