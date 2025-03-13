@@ -21,5 +21,15 @@ export { default as FormLabel } from "./dist/types/form-label/form-label";
 export * from "./dist/types/form-label/form-label";
 
 export { default as Accordion } from "./dist/types/accordion/accordion";
+export * from "./dist/types/accordion/accordion";
+
+export { default as AccordionWrapper } from "./dist/types/accordion/accordion-wrapper";
+export * from "./dist/types/accordion/accordion-wrapper";
+
+export { default as AccordionSummary } from "./dist/types/accordion/accordion-summary";
+export * from "./dist/types/accordion/accordion-summary";
+
+export { default as AccordionDetails } from "./dist/types/accordion/accordion-details";
+export * from "./dist/types/accordion/accordion-details";
 
 export { default as Collapse } from "./dist/types/collapse/collapse";
