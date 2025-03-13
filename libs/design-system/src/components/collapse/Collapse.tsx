@@ -11,7 +11,7 @@ function Collapse({
   isCollapsed,
   ...rest
 }: TCollapseProps): JSX.Element {
-  const { refComponent, isFirstRender } = useCollapse({ isCollapsed });
+  const { refComponent } = useCollapse({ isCollapsed });
 
   return (
     <Block
@@ -19,12 +19,10 @@ function Collapse({
       component="div"
       ref={refComponent}
       className={twJoin(
-        "overflow-hidden bg-red-200 transition-[height]",
-        isFirstRender.current && "h-0",
+        "Dui-Collapse-root",
+        isCollapsed && "Dui-Collapsed",
+        "overflow-hidden transition-[height] h-0",
       )}
-      style={{
-        ...(isCollapsed && { height: refComponent.current?.scrollHeight }),
-      }}
     >
       {children}
     </Block>

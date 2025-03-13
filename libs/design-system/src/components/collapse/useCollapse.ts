@@ -2,32 +2,36 @@ import { useEffect, useRef, type RefObject } from "react";
 
 import type { TCollapseProps } from "../../types/components/collapse/collapse";
 
+interface IUseCollapseReturn {
+  refComponent: RefObject<HTMLDivElement | null>;
+}
 export function useCollapse({
   isCollapsed,
-}: Pick<TCollapseProps, "isCollapsed">) {
-  const isFirstRender: RefObject<boolean> = useRef<boolean>(true);
-  const refComponent = useRef<HTMLDivElement>(null);
+}: Pick<TCollapseProps, "isCollapsed">): IUseCollapseReturn {
+  const refComponent: IUseCollapseReturn["refComponent"] =
+    useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
 
-    if (refComponent.current && isCollapsed) {
+    if (refComponent.current && !isCollapsed) {
+      refComponent.current.style.height =
+        refComponent.current.scrollHeight + "px";
+
       timeoutId = setTimeout(() => {
         // for responsive
         refComponent.current!.style.height = "auto";
-      }, 250);
-    } else if (refComponent.current && !isCollapsed && !isFirstRender.current) {
+        refComponent.current!.style.overflow = "visible";
+      }, 250 /*because animation time is equal 250ms*/);
+    } else if (refComponent.current && isCollapsed) {
       // for close animation
-      refComponent.current!.style.height =
+      refComponent.current.style.height =
         refComponent.current.scrollHeight + "px";
+
       timeoutId = setTimeout(() => {
         refComponent.current!.style.height = 0 + "px";
+        refComponent.current!.style.overflow = "hidden";
       });
-    }
-
-    // check first render
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
     }
 
     return (): void => clearTimeout(timeoutId);
@@ -35,6 +39,5 @@ export function useCollapse({
 
   return {
     refComponent,
-    isFirstRender,
   };
 }
