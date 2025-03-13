@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 
 import { AccordionWrapper, AccordionSummary, AccordionDetails } from ".";
+import { Typography } from "../typography";
 
 function Accordion({ i }: { i: ReactNode }) {
   // const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -12,7 +13,14 @@ function Accordion({ i }: { i: ReactNode }) {
     >
       <AccordionSummary expandedIcon={i}>تست</AccordionSummary>
 
-      <AccordionDetails />
+      <AccordionDetails className="bg-primary-1 px-10">
+        <Typography>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+          quisquam assumenda nulla ab libero est at nostrum? Quod quis similique
+          voluptas ex aperiam totam reiciendis, consectetur, exercitationem
+          eveniet aut iusto.
+        </Typography>
+      </AccordionDetails>
     </AccordionWrapper>
   );
 }

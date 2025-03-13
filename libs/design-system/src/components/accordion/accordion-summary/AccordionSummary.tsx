@@ -26,7 +26,7 @@ function AccordionSummary({
           componentsProps?.button?.["aria-expanded"] ?? value.isExpanded
         }
         className={twJoin(
-          "w-full justify-between rounded-[0px] hover:bg-transparent",
+          "w-full justify-between rounded-[0px] hover:bg-transparent px-0 py-2",
           componentsProps?.button?.className,
         )}
         duiCn={twJoin(
