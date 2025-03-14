@@ -20,19 +20,23 @@ module.exports = {
     },
     checkbox: {
       import: "./src/components/checkbox/index.ts",
-      filename: "./components/checkbox/[name].bundler.js"
+      filename: "./components/checkbox/[name].bundler.js",
     },
     formLabel: {
       import: "./src/components/form-label/index.ts",
-      filename: "./components/form-label/[name].bundler.js"
+      filename: "./components/form-label/[name].bundler.js",
     },
     accordion: {
       import: "./src/components/accordion/index.ts",
-      filename: "./components/accordion/[name].bundler.js"
+      filename: "./components/accordion/[name].bundler.js",
     },
     collapse: {
       import: "./src/components/collapse/index.ts",
-      filename: "./components/collapse/[name].bundler.js"
+      filename: "./components/collapse/[name].bundler.js",
+    },
+    treeSelect: {
+      import: "./src/components/tree-select/index.ts",
+      filename: "./components/tree-select/[name].bundler.js",
     },
     theme: {
       import: "./src/theme/theme.ts",

@@ -33,3 +33,5 @@ export { default as AccordionDetails } from "./dist/types/accordion/accordion-de
 export * from "./dist/types/accordion/accordion-details";
 
 export { default as Collapse } from "./dist/types/collapse/collapse";
+
+export { default as TreeSelect } from "./dist/components/tree-select/tree-select";
