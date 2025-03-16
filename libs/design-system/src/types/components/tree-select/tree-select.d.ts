@@ -20,7 +20,7 @@ interface ITreeSelectItemBase {
     typographyProps?: TTypographyProps;
     checkboxProps?: Omit<ICheckboxProps, "checked">;
   };
-  children?: ITreeSelectItemBase[];
+  children?: (ITreeSelectAccordionItem | ITreeSelectNormalItem)[];
 }
 
 export interface ITreeSelectNormalItem extends ITreeSelectItemBase {

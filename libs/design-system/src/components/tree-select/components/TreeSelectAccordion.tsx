@@ -18,9 +18,9 @@ export function TreeSelectAccordion({
       details={({ details }) => details}
       item={item}
       componentsProps={{
-        accordionWrapperProps: item.accordionProps?.accordionWrapperProps,
-        accordionDetailsProps: item.accordionProps?.accordionDetailsProps,
-        accordionSummaryProps: item.accordionProps?.accordionSummaryProps,
+        accordionWrapperProps: item.accordionProps?.wrapperProps,
+        accordionDetailsProps: item.accordionProps?.detailsProps,
+        accordionSummaryProps: item.accordionProps?.summaryProps,
       }}
       summary={(item) => (
         <TreeSelectItem

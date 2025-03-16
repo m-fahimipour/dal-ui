@@ -8,7 +8,7 @@ function TreeSelect({
   accordionProps,
   itemProps,
 }: ITreeSelectProps): JSX.Element {
-  const { createTree } = useTreeSelect({ itemProps, accordionProps });
+  const { createTree } = useTreeSelect({ accordionProps, itemProps });
   return <>{createTree(items).map((child) => child.element)}</>;
 }
 

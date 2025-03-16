@@ -20,6 +20,7 @@ export function TreeSelectItem({ item }: ITreeSelectItem): JSX.Element {
         onClick={(e: MouseEvent) => e.stopPropagation()}
         {...item.itemProps?.checkboxProps}
         checked={item.isChecked}
+        isActiveIndeterminate
         isIndeterminate={
           !item.isChecked
             ? item.children?.some((item) => item.isChecked)

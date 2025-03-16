@@ -9,7 +9,47 @@ interface IUseTreeSelect {
   accordionProps?: ITreeSelectProps["accordionProps"];
 }
 
-export function useTreeSelect({ itemProps, accordionProps }: IUseTreeSelect) {
+export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
+  function createAccordionStyles(
+    globalStyle?: ITreeSelectProps["accordionProps"],
+    itemStyle?: ITreeSelectProps["accordionProps"],
+  ): ITreeSelectProps["accordionProps"] {
+    return {
+      wrapperProps: {
+        ...(globalStyle && globalStyle.wrapperProps),
+        ...(itemStyle && itemStyle.wrapperProps),
+      },
+      detailsProps: {
+        ...(globalStyle && globalStyle.detailsProps),
+        ...(itemStyle && itemStyle.detailsProps),
+      },
+      summaryProps: {
+        ...(globalStyle && globalStyle.summaryProps),
+        ...(itemStyle && itemStyle.summaryProps),
+      },
+    };
+  }
+
+  function createNormalItemStyles(
+    globalStyle?: ITreeSelectProps["itemProps"],
+    itemStyle?: ITreeSelectProps["itemProps"],
+  ): ITreeSelectProps["itemProps"] {
+    return {
+      wrapperProps: {
+        ...(globalStyle && globalStyle.wrapperProps),
+        ...(itemStyle && itemStyle.wrapperProps),
+      },
+      typographyProps: {
+        ...(globalStyle && globalStyle.typographyProps),
+        ...(itemStyle && itemStyle.typographyProps),
+      },
+      checkboxProps: {
+        ...(globalStyle && globalStyle.checkboxProps),
+        ...(itemStyle && itemStyle.checkboxProps),
+      },
+    };
+  }
+
   // function for create tree
   function createTree(
     data: ITreeSelectProps["items"],
@@ -38,22 +78,10 @@ export function useTreeSelect({ itemProps, accordionProps }: IUseTreeSelect) {
             key: currentNode.id,
             item: {
               ...currentNode,
-              ...(itemProps && {
-                itemProps: {
-                  wrapperProps: {
-                    ...itemProps.wrapperProps,
-                    ...currentNode.itemProps.wrapperProps,
-                  },
-                  typographyProps: {
-                    ...itemProps.typographyProps,
-                    ...currentNode.itemProps.typographyProps,
-                  },
-                  checkboxProps: {
-                    ...itemProps.checkboxProps,
-                    ...currentNode.itemProps.checkboxProps,
-                  },
-                },
-              }),
+              itemProps: createNormalItemStyles(
+                itemProps,
+                currentNode.itemProps,
+              ),
             },
           },
           null,
@@ -73,13 +101,10 @@ export function useTreeSelect({ itemProps, accordionProps }: IUseTreeSelect) {
             key: currentNode.id,
             item: {
               ...currentNode,
-              ...(accordionProps && {
-                accordionProps: {
-                  wrapperProps?: { ...accordionProps.wrapperProps, ...currentNode.accordionProps.wrapperProps },
-                  summaryProps?: { ...accordionProps.summaryProps, ...currentNode.accordionProps.summaryProps },
-                  detailsProps?: { ...accordionProps.detailsProps, ...currentNode.accordionProps.detailsProps }
-                }
-              }),
+              accordionProps: createAccordionStyles(
+                accordionProps,
+                currentNode.accordionProps,
+              ),
               details: currentNode.children?.map(
                 (child: ITreeSelectProps["items"][number]) => child.element,
               ),
