@@ -26,7 +26,7 @@ function AccordionSummary({
           componentsProps?.button?.["aria-expanded"] ?? value.isExpanded
         }
         className={twJoin(
-          "w-full justify-between rounded-[0px] hover:bg-transparent px-0 py-2",
+          "w-full justify-between rounded-[0px] px-0 py-2 hover:bg-transparent",
           componentsProps?.button?.className,
         )}
         duiCn={twJoin(
@@ -34,7 +34,7 @@ function AccordionSummary({
           value.isExpanded && "Dui-Expanded",
         )}
         onClick={(e: MouseEvent<HTMLButtonElement>) => {
-          value.handlerExpanded?.();
+          value.handlerExpanded?.(e);
           componentsProps?.button?.onClick?.(e);
         }}
       >

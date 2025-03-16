@@ -24,11 +24,11 @@ export function useAccordionWrapper({
     return {
       disabled,
       isExpanded: isExpanded || isExpandedInner,
-      handlerExpanded(): void {
+      handlerExpanded(event): void {
         if (typeof isExpanded == "undefined") {
           setIsExpandedInner((isPrev: boolean) => !isPrev);
         } else {
-          onChange?.(!isExpanded);
+          onChange?.(event, !isExpanded);
         }
       },
     };

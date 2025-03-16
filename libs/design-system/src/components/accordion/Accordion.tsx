@@ -1,25 +1,32 @@
-import { type ReactNode } from "react";
+import type { JSX } from "react";
 
 import { AccordionWrapper, AccordionSummary, AccordionDetails } from ".";
-import { Typography } from "../typography";
+import type { IAccordionProps } from "../../types/components/accordion/accordion";
 
-function Accordion({ i }: { i: ReactNode }) {
-  // const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
+function Accordion<T extends { id: number | string }>({
+  item,
+  expandedId,
+  disabled,
+  componentsProps,
+  handlerExpanded,
+  summary,
+  details,
+}: IAccordionProps<T>): JSX.Element {
   return (
     <AccordionWrapper
-    // isExpanded={isExpanded}
-    // onChange={(isExpanded) => setIsExpanded(isExpanded)}
+      {...componentsProps?.accordionWrapperProps}
+      {...(typeof expandedId !== "undefined" && {
+        isExpanded: expandedId === item.id,
+      })}
+      disabled={disabled}
+      onChange={(e, isExpanded) => handlerExpanded?.(e, item.id, isExpanded)}
     >
-      <AccordionSummary expandedIcon={i}>تست</AccordionSummary>
+      <AccordionSummary {...componentsProps?.accordionSummaryProps}>
+        {summary?.(item)}
+      </AccordionSummary>
 
-      <AccordionDetails className="bg-primary-1 px-10">
-        <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-          quisquam assumenda nulla ab libero est at nostrum? Quod quis similique
-          voluptas ex aperiam totam reiciendis, consectetur, exercitationem
-          eveniet aut iusto.
-        </Typography>
+      <AccordionDetails {...componentsProps?.accordionDetailsProps}>
+        {details?.(item)}
       </AccordionDetails>
     </AccordionWrapper>
   );
