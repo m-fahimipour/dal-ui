@@ -1,8 +1,16 @@
 import { createElement } from "react";
 
 import type { ITreeSelectProps } from "../../types/components/tree-select/tree-select";
+import { TreeSelectAccordion } from "./components/TreeSelectAccordion";
+import { TreeSelectItem } from "./components/TreeSelectItem";
 
-export function useTreeSelect() {
+interface IUseTreeSelect {
+  itemProps?: ITreeSelectProps["itemProps"];
+  accordionProps?: ITreeSelectProps["accordionProps"];
+}
+
+export function useTreeSelect({ itemProps, accordionProps }: IUseTreeSelect) {
+  // function for create tree
   function createTree(
     data: ITreeSelectProps["items"],
   ): ITreeSelectProps["items"] {
@@ -23,12 +31,33 @@ export function useTreeSelect() {
         );
 
         // create element for last nodes on tree
-      } else if (currentNode) {
-        currentNode.element = createElement(Accordion, {
-          isChecked: currentNode.isChecked,
-          label: currentNode.label,
-          key: currentNode.value,
-        });
+      } else if (currentNode && currentNode.type == "item") {
+        currentNode.element = createElement(
+          TreeSelectItem,
+          {
+            key: currentNode.id,
+            item: {
+              ...currentNode,
+              ...(itemProps && {
+                itemProps: {
+                  wrapperProps: {
+                    ...itemProps.wrapperProps,
+                    ...currentNode.itemProps.wrapperProps,
+                  },
+                  typographyProps: {
+                    ...itemProps.typographyProps,
+                    ...currentNode.itemProps.typographyProps,
+                  },
+                  checkboxProps: {
+                    ...itemProps.checkboxProps,
+                    ...currentNode.itemProps.checkboxProps,
+                  },
+                },
+              }),
+            },
+          },
+          null,
+        );
       }
     }
 
@@ -37,18 +66,26 @@ export function useTreeSelect() {
       const currentNode: ITreeSelectProps["items"][number] | undefined =
         restNodes.shift();
 
-      if (currentNode) {
+      if (currentNode && currentNode.type == "accordion") {
         currentNode.element = createElement(
-          Accordion,
+          TreeSelectAccordion,
           {
-            isChecked: currentNode.isChecked,
-            label: currentNode.label,
-            key: currentNode.value,
+            key: currentNode.id,
+            item: {
+              ...currentNode,
+              ...(accordionProps && {
+                accordionProps: {
+                  wrapperProps?: { ...accordionProps.wrapperProps, ...currentNode.accordionProps.wrapperProps },
+                  summaryProps?: { ...accordionProps.summaryProps, ...currentNode.accordionProps.summaryProps },
+                  detailsProps?: { ...accordionProps.detailsProps, ...currentNode.accordionProps.detailsProps }
+                }
+              }),
+              details: currentNode.children?.map(
+                (child: ITreeSelectProps["items"][number]) => child.element,
+              ),
+            },
           },
-
-          currentNode.children?.map(
-            (child: ITreeSelectProps["items"][number]) => child.element,
-          ),
+          null,
         );
         if (!currentNode.hasParent) myTree.push(currentNode);
       }

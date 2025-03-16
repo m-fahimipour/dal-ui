@@ -1,19 +1,45 @@
 import type { JSX, ReactElement } from "react";
 
-interface IDefaultProperty {
+import type { TAccordionDetailsProps } from "../accordion/accordion-details";
+import type { IAccordionSummaryProps } from "../accordion/accordion-summary";
+import type { IAccordionWrapperProps } from "../accordion/accordion-wrapper";
+import type { TBlockProps } from "../block/Block";
+import type { ICheckboxProps } from "../checkbox/Checkbox";
+import type { TTypographyProps } from "../typography/Typography";
+
+interface ITreeSelectItemBase {
+  id: string | number;
   label: ReactElement | string;
   value: string;
   isChecked: boolean;
-  props?: any;
+  isDisabled?: boolean;
   element?: ReactElement;
   hasParent?: boolean;
-  children?: IDefaultProperty[];
+  itemProps?: {
+    wrapperProps?: TBlockProps;
+    typographyProps?: TTypographyProps;
+    checkboxProps?: Omit<ICheckboxProps, "checked">;
+  };
+  children?: ITreeSelectItemBase[];
 }
 
-export interface ITreeSelectProps<
-  T extends IDefaultProperty = IDefaultProperty,
-> {
-  items: T[];
+export interface ITreeSelectNormalItem extends ITreeSelectItemBase {
+  type: "item";
+}
+
+export interface ITreeSelectAccordionItem extends ITreeSelectItemBase {
+  type: "accordion";
+  accordionProps?: {
+    wrapperProps?: Omit<IAccordionWrapperProps, "children">;
+    summaryProps?: Omit<IAccordionSummaryProps, "children">;
+    detailsProps?: Omit<TAccordionDetailsProps, "children">;
+  };
+}
+
+export interface ITreeSelectProps {
+  items: (ITreeSelectNormalItem | ITreeSelectAccordionItem)[];
+  itemProps?: ITreeSelectItemBase["itemProps"];
+  accordionProps?: ITreeSelectAccordionItem["accordionProps"];
 }
 
 declare const TreeSelect: (props: ITreeSelectProps) => JSX.Element;

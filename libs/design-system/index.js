@@ -15,4 +15,6 @@ export {
   AccordionDetails,
 } from "./dist/components/accordion/accordion.bundler";
 
+export { TreeSelect } from "./dist/components/tree-select/treeSelect.bundler";
+
 export { Collapse } from "./dist/components/collapse/collapse.bundler";

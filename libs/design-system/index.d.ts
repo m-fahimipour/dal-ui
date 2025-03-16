@@ -34,4 +34,5 @@ export * from "./dist/types/accordion/accordion-details";
 
 export { default as Collapse } from "./dist/types/collapse/collapse";
 
-export { default as TreeSelect } from "./dist/components/tree-select/tree-select";
+export { default as TreeSelect } from "./dist/types/tree-select/tree-select";
+export * from "./dist/types/tree-select/tree-select";
