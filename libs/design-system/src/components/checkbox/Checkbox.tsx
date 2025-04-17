@@ -18,8 +18,8 @@ function Checkbox({
       component="div"
       className={twJoin(
         "Dui-Checkbox-root",
-        "relative overflow-hidden rounded-xs",
         size,
+        "relative overflow-hidden rounded-xs",
       )}
     >
       <Block
@@ -50,11 +50,12 @@ function Checkbox({
             !inputProps.checked &&
               isIndeterminate &&
               "bg-primary-main dark:bg-secondary-main",
+            (!isIndeterminate || inputProps.checked) &&
+              !inputProps.disabled &&
+              "peer-checked:bg-primary-main dark:peer-checked:bg-secondary-main",
             inputProps.disabled &&
               !isIndeterminate &&
               "peer-checked:bg-disabled-2",
-            (!isIndeterminate || inputProps.checked) &&
-              "peer-checked:bg-primary-main dark:peer-checked:bg-secondary-main",
           )}
         >
           {/* checked icon */}
