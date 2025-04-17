@@ -61,7 +61,11 @@ export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
         myTree.pop();
 
       // check currentNode has children or not
-      if (currentNode?.children?.length) {
+      if (
+        currentNode &&
+        "children" in currentNode &&
+        currentNode.children?.length
+      ) {
         restNodes.unshift(currentNode);
         currentNode.children.forEach(
           (child: ITreeSelectProps["items"][number]) => {
@@ -71,7 +75,7 @@ export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
         );
 
         // create element for last nodes on tree
-      } else if (currentNode && currentNode.type == "item") {
+      } else if (currentNode && currentNode.type == "simple-item") {
         currentNode.element = createElement(
           TreeSelectItem,
           {
@@ -94,7 +98,7 @@ export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
       const currentNode: ITreeSelectProps["items"][number] | undefined =
         restNodes.shift();
 
-      if (currentNode && currentNode.type == "accordion") {
+      if (currentNode && currentNode.type == "accordion-item") {
         currentNode.element = createElement(
           TreeSelectAccordion,
           {

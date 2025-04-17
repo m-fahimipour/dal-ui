@@ -1,12 +1,15 @@
 import type { JSX, MouseEvent } from "react";
 
-import type { ITreeSelectNormalItem } from "../../../types/components/tree-select/tree-select";
+import type {
+  ITreeSelectAccordionItem,
+  ITreeSelectSimpleItem,
+} from "../../../types/components/tree-select/tree-select";
 import { Block } from "../../block";
 import { Checkbox } from "../../checkbox";
 import { Typography } from "../../typography";
 
 interface ITreeSelectItem {
-  item: ITreeSelectNormalItem;
+  item: ITreeSelectSimpleItem | ITreeSelectAccordionItem;
 }
 
 export function TreeSelectItem({ item }: ITreeSelectItem): JSX.Element {
@@ -19,13 +22,15 @@ export function TreeSelectItem({ item }: ITreeSelectItem): JSX.Element {
         size="cb-small"
         onClick={(e: MouseEvent) => e.stopPropagation()}
         {...item.itemProps?.checkboxProps}
-        checked={item.isChecked}
         isActiveIndeterminate
-        isIndeterminate={
-          !item.isChecked
-            ? item.children?.some((item) => item.isChecked)
-            : false
-        }
+        checked={item.isChecked}
+        {...(item.type === "accordion-item" && {
+          isIndeterminate: !item.isChecked
+            ? item.children?.some(
+                (child: ITreeSelectItem["item"]) => child.isChecked,
+              )
+            : false,
+        })}
       />
 
       {typeof item.label == "string" ? (

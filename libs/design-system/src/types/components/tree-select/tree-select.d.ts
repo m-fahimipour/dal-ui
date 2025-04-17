@@ -20,15 +20,15 @@ interface ITreeSelectItemBase {
     typographyProps?: TTypographyProps;
     checkboxProps?: Omit<ICheckboxProps, "checked">;
   };
-  children?: (ITreeSelectAccordionItem | ITreeSelectNormalItem)[];
 }
 
-export interface ITreeSelectNormalItem extends ITreeSelectItemBase {
-  type: "item";
+export interface ITreeSelectSimpleItem extends ITreeSelectItemBase {
+  type: "simple-item";
 }
 
 export interface ITreeSelectAccordionItem extends ITreeSelectItemBase {
-  type: "accordion";
+  type: "accordion-item";
+  children?: (ITreeSelectAccordionItem | ITreeSelectSimpleItem)[];
   accordionProps?: {
     wrapperProps?: Omit<IAccordionWrapperProps, "children">;
     summaryProps?: Omit<IAccordionSummaryProps, "children">;
@@ -37,7 +37,7 @@ export interface ITreeSelectAccordionItem extends ITreeSelectItemBase {
 }
 
 export interface ITreeSelectProps {
-  items: (ITreeSelectNormalItem | ITreeSelectAccordionItem)[];
+  items: (ITreeSelectSimpleItem | ITreeSelectAccordionItem)[];
   itemProps?: ITreeSelectItemBase["itemProps"];
   accordionProps?: ITreeSelectAccordionItem["accordionProps"];
 }

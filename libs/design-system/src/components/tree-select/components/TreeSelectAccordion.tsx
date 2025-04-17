@@ -25,7 +25,7 @@ export function TreeSelectAccordion({
       summary={(item) => (
         <TreeSelectItem
           item={{
-            type: "item",
+            type: item.type,
             id: item.id,
             label: item.label,
             value: item.value,
