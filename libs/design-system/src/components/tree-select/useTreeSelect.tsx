@@ -1,15 +1,50 @@
-import { createElement } from "react";
+import { createElement, useLayoutEffect, useRef, useState } from "react";
 
 import type { ITreeSelectProps } from "../../types/components/tree-select/tree-select";
 import { TreeSelectAccordion } from "./components/TreeSelectAccordion";
 import { TreeSelectItem } from "./components/TreeSelectItem";
+import { SpecificArray } from "./helper/method";
 
-interface IUseTreeSelect {
-  itemProps?: ITreeSelectProps["itemProps"];
-  accordionProps?: ITreeSelectProps["accordionProps"];
-}
+interface IUseTreeSelect extends ITreeSelectProps {}
 
-export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
+export function useTreeSelect({
+  items,
+  accordionProps,
+  itemProps,
+}: IUseTreeSelect) {
+  const dataRef = useRef<IUseTreeSelect["items"]>(
+    SpecificArray.from(structuredClone(items)),
+  );
+  const [updateUI, setUpdateUI] = useState<number>(0);
+
+  function changeHandler(selectedItem: IUseTreeSelect["items"][number]): void {
+    const foundItem: IUseTreeSelect["items"][number] | undefined =
+      dataRef.current["findItem"]?.(selectedItem.id);
+    const parentItem: IUseTreeSelect["items"][number] | undefined =
+      dataRef.current["findItem"]?.(selectedItem.parentId);
+
+    if (foundItem) {
+      foundItem.isChecked = !foundItem.isChecked;
+      if (foundItem.type === "accordion-item") {
+        foundItem.children?.forEach((item) => {
+          item.isChecked = foundItem.isChecked;
+        });
+      }
+      if (parentItem && parentItem.type === "accordion-item") {
+        const isCheckedAllChild: boolean | undefined =
+          parentItem.children?.every((item) => item.isChecked);
+        if (isCheckedAllChild) {
+          parentItem.isChecked = true;
+        } else {
+          parentItem.isChecked = false;
+        }
+      }
+      dataRef.current = createTreeUI(dataRef.current);
+      setUpdateUI((c) => c + 1);
+    }
+
+  }
+
   function createAccordionStyles(
     globalStyle?: ITreeSelectProps["accordionProps"],
     itemStyle?: ITreeSelectProps["accordionProps"],
@@ -51,10 +86,10 @@ export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
   }
 
   // function for create tree
-  function createTree(
+  function createTreeUI(
     data: ITreeSelectProps["items"],
   ): ITreeSelectProps["items"] {
-    const myTree: ITreeSelectProps["items"] = [...structuredClone(data)];
+    const myTree: ITreeSelectProps["items"] = SpecificArray.from(data);
     const restNodes: ITreeSelectProps["items"] = [];
     while (myTree.length) {
       const currentNode: ITreeSelectProps["items"][number] | undefined =
@@ -69,7 +104,7 @@ export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
         restNodes.unshift(currentNode);
         currentNode.children.forEach(
           (child: ITreeSelectProps["items"][number]) => {
-            child.hasParent = true;
+            child.parentId = currentNode.id;
             myTree.push(child);
           },
         );
@@ -87,6 +122,7 @@ export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
                 currentNode.itemProps,
               ),
             },
+            onChangeHandler: changeHandler,
           },
           null,
         );
@@ -113,17 +149,23 @@ export function useTreeSelect({ accordionProps, itemProps }: IUseTreeSelect) {
                 (child: ITreeSelectProps["items"][number]) => child.element,
               ),
             },
+            onChangeHandler: changeHandler,
           },
           null,
         );
-        if (!currentNode.hasParent) myTree.push(currentNode);
+        if (!currentNode.parentId) myTree.push(currentNode);
       }
     }
 
     return myTree;
   }
 
+  useLayoutEffect(() => {
+    dataRef.current = createTreeUI(dataRef.current);
+    setUpdateUI((c) => c + 1);
+  }, []);
+
   return {
-    createTree,
+    data: dataRef.current,
   };
 }

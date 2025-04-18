@@ -1,4 +1,4 @@
-import type { JSX, MouseEvent } from "react";
+import type { ChangeEvent, JSX, MouseEvent } from "react";
 
 import type {
   ITreeSelectAccordionItem,
@@ -10,20 +10,24 @@ import { Typography } from "../../typography";
 
 interface ITreeSelectItem {
   item: ITreeSelectSimpleItem | ITreeSelectAccordionItem;
+  onChangeHandler(item: ITreeSelectItem["item"]): void;
 }
 
-export function TreeSelectItem({ item }: ITreeSelectItem): JSX.Element {
+export function TreeSelectItem({
+  item,
+  onChangeHandler,
+}: ITreeSelectItem): JSX.Element {
   return (
     <Block
       className="flex items-center gap-2"
       {...item.itemProps?.wrapperProps}
     >
       <Checkbox
-        size="cb-small"
-        onClick={(e: MouseEvent) => e.stopPropagation()}
-        {...item.itemProps?.checkboxProps}
         isActiveIndeterminate
+        size="cb-small"
+        {...item.itemProps?.checkboxProps}
         checked={item.isChecked}
+        disabled={item.isDisabled}
         {...(item.type === "accordion-item" && {
           isIndeterminate: !item.isChecked
             ? item.children?.some(
@@ -31,6 +35,11 @@ export function TreeSelectItem({ item }: ITreeSelectItem): JSX.Element {
               )
             : false,
         })}
+        onClick={(e: MouseEvent) => e.stopPropagation()}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          e.stopPropagation();
+          onChangeHandler(item);
+        }}
       />
 
       {typeof item.label == "string" ? (

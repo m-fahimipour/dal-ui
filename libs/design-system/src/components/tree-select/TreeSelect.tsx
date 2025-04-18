@@ -8,8 +8,15 @@ function TreeSelect({
   accordionProps,
   itemProps,
 }: ITreeSelectProps): JSX.Element {
-  const { createTree } = useTreeSelect({ accordionProps, itemProps });
-  return <>{createTree(items).map((child) => child.element)}</>;
+  const { data } = useTreeSelect({
+    items,
+    accordionProps,
+    itemProps,
+  });
+  
+  return (
+    <>{data?.map((child: ITreeSelectProps["items"][number]) => child.element)}</>
+  );
 }
 
 export default TreeSelect;

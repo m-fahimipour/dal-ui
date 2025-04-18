@@ -8,10 +8,12 @@ export interface ITreeSelectAccordion {
   item: ITreeSelectAccordionItem & {
     details?: (ReactElement | undefined)[];
   };
+  onChangeHandler(item: ITreeSelectAccordion["item"]): void;
 }
 
 export function TreeSelectAccordion({
   item,
+  onChangeHandler,
 }: ITreeSelectAccordion): JSX.Element {
   return (
     <Accordion
@@ -33,6 +35,7 @@ export function TreeSelectAccordion({
             children: item.children,
             itemProps: item.itemProps,
           }}
+          onChangeHandler={onChangeHandler}
         />
       )}
     />
