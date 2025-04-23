@@ -36,8 +36,10 @@ export interface ITreeSelectAccordionItem extends ITreeSelectItemBase {
   };
 }
 
+export type TTreeSelectItem = ITreeSelectSimpleItem | ITreeSelectAccordionItem;
+
 export interface ITreeSelectProps {
-  items: (ITreeSelectSimpleItem | ITreeSelectAccordionItem)[];
+  items: TTreeSelectItem[];
   itemProps?: ITreeSelectItemBase["itemProps"];
   accordionProps?: ITreeSelectAccordionItem["accordionProps"];
 }
