@@ -22,12 +22,12 @@ export function useTreeSelect({
   itemProps,
   changeHandler,
 }: IUseTreeSelect) {
+  const [updateUI, setUpdateUI] = useState<number>(0);
   const clonedItems = useMemo<TreeNodeArray<TTreeSelectItem>>(() => {
     return TreeNodeArray.from(structuredClone(items));
   }, []);
 
   const dataRef = useRef<TreeNodeArray<TTreeSelectItem>>(clonedItems);
-  const [updateUI, setUpdateUI] = useState<number>(0);
 
   function onChange(selectedItem: TTreeSelectItem): void {
     TreeNodeArray.updateChildrenCheckState(

@@ -59,6 +59,8 @@ export declare class TreeNodeArray<T> extends Array<T> {
   ): void;
 
   findItem(id?: string | number): TTreeSelectItem | undefined;
+
+  getSelectedItems(): TreeNodeArray<TTreeSelectItem>;
 }
 
 export interface ITreeSelectProps {

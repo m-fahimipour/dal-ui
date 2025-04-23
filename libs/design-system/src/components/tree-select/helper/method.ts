@@ -129,6 +129,24 @@ class TreeNodeArray<T> extends Array<T> {
 
     return undefined;
   }
+
+  getSelectedItems(
+    this: TreeNodeArray<TTreeSelectItem>,
+  ): TreeNodeArray<TTreeSelectItem> {
+    const myTree = TreeNodeArray.from<TTreeSelectItem>(this);
+    const selectedItems = new TreeNodeArray<TTreeSelectItem>();
+
+    while (myTree.length) {
+      const currentNode: TTreeSelectItem | undefined = myTree.pop();
+      if (currentNode && currentNode.isChecked) {
+        selectedItems.push(currentNode);
+      } else if (currentNode?.type === "accordion-item") {
+        currentNode.children?.map((child) => myTree.unshift(child));
+      }
+    }
+
+    return selectedItems;
+  }
 }
 
 export { TreeNodeArray };
