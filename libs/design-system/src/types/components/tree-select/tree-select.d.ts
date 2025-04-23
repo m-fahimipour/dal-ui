@@ -29,7 +29,7 @@ export interface ITreeSelectSimpleItem extends ITreeSelectItemBase {
 
 export interface ITreeSelectAccordionItem extends ITreeSelectItemBase {
   type: "accordion-item";
-  children?: (ITreeSelectAccordionItem | ITreeSelectSimpleItem)[];
+  children?: TTreeSelectItem[];
   accordionProps?: {
     wrapperProps?: Omit<IAccordionWrapperProps, "children">;
     summaryProps?: Omit<IAccordionSummaryProps, "children">;
@@ -39,10 +39,33 @@ export interface ITreeSelectAccordionItem extends ITreeSelectItemBase {
 
 export type TTreeSelectItem = ITreeSelectSimpleItem | ITreeSelectAccordionItem;
 
+export declare class TreeNodeArray<T> extends Array<T> {
+  static override from<T>(items: ArrayLike<T> | Iterable<T>): TreeNodeArray<T>;
+
+  static updateChildrenCheckState(
+    array: TreeNodeArray<TTreeSelectItem>,
+    id: string | number,
+    isChecked: boolean,
+  ): void;
+
+  static updateParentsCheckState(
+    array: TreeNodeArray<TTreeSelectItem>,
+    item: TTreeSelectItem,
+  ): void;
+
+  static updateIndeterminateState(
+    array: TreeNodeArray<TTreeSelectItem>,
+    item: TTreeSelectItem,
+  ): void;
+
+  findItem(id?: string | number): TTreeSelectItem | undefined;
+}
+
 export interface ITreeSelectProps {
-  items: TTreeSelectItem[];
+  items: TreeNodeArray<TTreeSelectItem>;
   itemProps?: ITreeSelectItemBase["itemProps"];
   accordionProps?: ITreeSelectAccordionItem["accordionProps"];
+  changeHandler?(items: ITreeSelectProps["items"]): unknown;
 }
 
 declare const TreeSelect: (props: ITreeSelectProps) => JSX.Element;

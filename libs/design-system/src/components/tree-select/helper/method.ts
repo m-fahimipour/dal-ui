@@ -1,12 +1,12 @@
 import type { TTreeSelectItem } from "../../../types/components/tree-select/tree-select";
 
-class SpecificArray<T> extends Array<T> {
+class TreeNodeArray<T> extends Array<T> {
   constructor() {
     super();
   }
 
-  static override from<T>(items: ArrayLike<T> | Iterable<T>): SpecificArray<T> {
-    const arr = new SpecificArray<T>();
+  static override from<T>(items: ArrayLike<T> | Iterable<T>): TreeNodeArray<T> {
+    const arr = new TreeNodeArray<T>();
     for (const item of super.from(items)) {
       arr.push(item);
     }
@@ -15,15 +15,15 @@ class SpecificArray<T> extends Array<T> {
   }
 
   static updateChildrenCheckState(
-    array: SpecificArray<TTreeSelectItem>,
+    array: TreeNodeArray<TTreeSelectItem>,
     id: string | number,
     isChecked: boolean,
   ): void {
     const selectedItem: TTreeSelectItem | undefined = array.findItem(id);
 
     if (selectedItem) {
-      const myTree: SpecificArray<TTreeSelectItem> =
-        SpecificArray.from<TTreeSelectItem>([selectedItem]);
+      const myTree: TreeNodeArray<TTreeSelectItem> =
+        TreeNodeArray.from<TTreeSelectItem>([selectedItem]);
 
       while (myTree.length) {
         const currentNode: TTreeSelectItem | undefined = myTree.pop();
@@ -41,7 +41,7 @@ class SpecificArray<T> extends Array<T> {
   }
 
   static updateParentsCheckState(
-    array: SpecificArray<TTreeSelectItem>,
+    array: TreeNodeArray<TTreeSelectItem>,
     item: TTreeSelectItem,
   ) {
     const parentItem: TTreeSelectItem | undefined = array.findItem(
@@ -49,8 +49,8 @@ class SpecificArray<T> extends Array<T> {
     );
 
     if (parentItem) {
-      const myQueue: SpecificArray<TTreeSelectItem> =
-        SpecificArray.from<TTreeSelectItem>([parentItem]);
+      const myQueue: TreeNodeArray<TTreeSelectItem> =
+        TreeNodeArray.from<TTreeSelectItem>([parentItem]);
 
       while (myQueue.length) {
         const pItem: TTreeSelectItem | undefined = myQueue.pop();
@@ -74,7 +74,7 @@ class SpecificArray<T> extends Array<T> {
   }
 
   static updateIndeterminateState(
-    array: SpecificArray<TTreeSelectItem>,
+    array: TreeNodeArray<TTreeSelectItem>,
     item: TTreeSelectItem,
   ) {
     const parentItem: TTreeSelectItem | undefined = array.findItem(
@@ -82,8 +82,8 @@ class SpecificArray<T> extends Array<T> {
     );
 
     if (parentItem) {
-      const myQueue: SpecificArray<TTreeSelectItem> =
-        SpecificArray.from<TTreeSelectItem>([parentItem]);
+      const myQueue: TreeNodeArray<TTreeSelectItem> =
+        TreeNodeArray.from<TTreeSelectItem>([parentItem]);
 
       while (myQueue.length) {
         const pItem: TTreeSelectItem | undefined = myQueue.pop();
@@ -103,13 +103,13 @@ class SpecificArray<T> extends Array<T> {
   }
 
   findItem(
-    this: SpecificArray<TTreeSelectItem>,
+    this: TreeNodeArray<TTreeSelectItem>,
     id?: string | number,
   ): TTreeSelectItem | undefined {
     if (!id) return;
 
-    const myTree: SpecificArray<TTreeSelectItem> =
-      SpecificArray.from<TTreeSelectItem>(this);
+    const myTree: TreeNodeArray<TTreeSelectItem> =
+      TreeNodeArray.from<TTreeSelectItem>(this);
 
     while (myTree.length) {
       const currentNode: TTreeSelectItem | undefined = myTree.pop();
@@ -131,4 +131,4 @@ class SpecificArray<T> extends Array<T> {
   }
 }
 
-export { SpecificArray };
+export { TreeNodeArray };

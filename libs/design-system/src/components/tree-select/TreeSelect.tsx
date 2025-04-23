@@ -10,11 +10,13 @@ function TreeSelect({
   items,
   accordionProps,
   itemProps,
+  changeHandler,
 }: ITreeSelectProps): JSX.Element {
   const { data } = useTreeSelect({
     items,
     accordionProps,
     itemProps,
+    changeHandler,
   });
 
   return <>{data?.map((child: TTreeSelectItem) => child.element)}</>;
