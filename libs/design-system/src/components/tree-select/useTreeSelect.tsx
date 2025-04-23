@@ -1,6 +1,9 @@
 import { createElement, useLayoutEffect, useRef, useState } from "react";
 
-import type { ITreeSelectProps } from "../../types/components/tree-select/tree-select";
+import type {
+  ITreeSelectProps,
+  TTreeSelectItem,
+} from "../../types/components/tree-select/tree-select";
 import { TreeSelectAccordion } from "./components/TreeSelectAccordion";
 import { TreeSelectItem } from "./components/TreeSelectItem";
 import { SpecificArray } from "./helper/method";
@@ -12,37 +15,22 @@ export function useTreeSelect({
   accordionProps,
   itemProps,
 }: IUseTreeSelect) {
-  const dataRef = useRef<IUseTreeSelect["items"]>(
+  const dataRef = useRef<SpecificArray<TTreeSelectItem>>(
     SpecificArray.from(structuredClone(items)),
   );
   const [updateUI, setUpdateUI] = useState<number>(0);
 
-  function changeHandler(selectedItem: IUseTreeSelect["items"][number]): void {
-    const foundItem: IUseTreeSelect["items"][number] | undefined =
-      dataRef.current["findItem"]?.(selectedItem.id);
-    const parentItem: IUseTreeSelect["items"][number] | undefined =
-      dataRef.current["findItem"]?.(selectedItem.parentId);
+  function changeHandler(selectedItem: TTreeSelectItem): void {
+    SpecificArray.updateChildrenCheckState(
+      dataRef.current,
+      selectedItem.id,
+      !selectedItem.isChecked,
+    );
 
-    if (foundItem) {
-      foundItem.isChecked = !foundItem.isChecked;
-      if (foundItem.type === "accordion-item") {
-        foundItem.children?.forEach((item) => {
-          item.isChecked = foundItem.isChecked;
-        });
-      }
-      if (parentItem && parentItem.type === "accordion-item") {
-        const isCheckedAllChild: boolean | undefined =
-          parentItem.children?.every((item) => item.isChecked);
-        if (isCheckedAllChild) {
-          parentItem.isChecked = true;
-        } else {
-          parentItem.isChecked = false;
-        }
-      }
-      dataRef.current = createTreeUI(dataRef.current);
-      setUpdateUI((c) => c + 1);
-    }
+    SpecificArray.updateParentsCheckState(dataRef.current, selectedItem);
 
+    dataRef.current = createTreeUI(dataRef.current);
+    setUpdateUI((c) => c + 1);
   }
 
   function createAccordionStyles(
@@ -87,13 +75,14 @@ export function useTreeSelect({
 
   // function for create tree
   function createTreeUI(
-    data: ITreeSelectProps["items"],
-  ): ITreeSelectProps["items"] {
-    const myTree: ITreeSelectProps["items"] = SpecificArray.from(data);
-    const restNodes: ITreeSelectProps["items"] = [];
+    data: SpecificArray<TTreeSelectItem>,
+  ): SpecificArray<TTreeSelectItem> {
+    const myTree: SpecificArray<TTreeSelectItem> = SpecificArray.from(data);
+    const restNodes: SpecificArray<TTreeSelectItem> =
+      new SpecificArray<TTreeSelectItem>();
+
     while (myTree.length) {
-      const currentNode: ITreeSelectProps["items"][number] | undefined =
-        myTree.pop();
+      const currentNode: TTreeSelectItem | undefined = myTree.pop();
 
       // check currentNode has children or not
       if (
@@ -102,12 +91,10 @@ export function useTreeSelect({
         currentNode.children?.length
       ) {
         restNodes.unshift(currentNode);
-        currentNode.children.forEach(
-          (child: ITreeSelectProps["items"][number]) => {
-            child.parentId = currentNode.id;
-            myTree.push(child);
-          },
-        );
+        currentNode.children.forEach((child: TTreeSelectItem) => {
+          child.parentId = currentNode.id;
+          myTree.push(child);
+        });
 
         // create element for last nodes on tree
       } else if (currentNode && currentNode.type == "simple-item") {
@@ -131,8 +118,7 @@ export function useTreeSelect({
 
     // create element for rest nodes
     while (restNodes.length) {
-      const currentNode: ITreeSelectProps["items"][number] | undefined =
-        restNodes.shift();
+      const currentNode: TTreeSelectItem | undefined = restNodes.shift();
 
       if (currentNode && currentNode.type == "accordion-item") {
         currentNode.element = createElement(
@@ -146,7 +132,7 @@ export function useTreeSelect({
                 currentNode.accordionProps,
               ),
               details: currentNode.children?.map(
-                (child: ITreeSelectProps["items"][number]) => child.element,
+                (child: TTreeSelectItem) => child.element,
               ),
             },
             onChangeHandler: changeHandler,

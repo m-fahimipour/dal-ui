@@ -1,6 +1,9 @@
 import type { JSX } from "react";
 
-import type { ITreeSelectProps } from "../../types/components/tree-select/tree-select";
+import type {
+  ITreeSelectProps,
+  TTreeSelectItem,
+} from "../../types/components/tree-select/tree-select";
 import { useTreeSelect } from "./useTreeSelect";
 
 function TreeSelect({
@@ -13,10 +16,8 @@ function TreeSelect({
     accordionProps,
     itemProps,
   });
-  
-  return (
-    <>{data?.map((child: ITreeSelectProps["items"][number]) => child.element)}</>
-  );
+
+  return <>{data?.map((child: TTreeSelectItem) => child.element)}</>;
 }
 
 export default TreeSelect;

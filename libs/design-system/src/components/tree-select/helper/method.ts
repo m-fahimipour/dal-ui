@@ -1,15 +1,84 @@
-import type { ITreeSelectProps } from "../../../types/components/tree-select/tree-select";
+import type { TTreeSelectItem } from "../../../types/components/tree-select/tree-select";
 
-class SpecificArray extends Array {
+class SpecificArray<T> extends Array<T> {
   constructor() {
     super();
   }
-  findItem(id: string | number): ITreeSelectProps["items"][number] | undefined {
-    const myTree: ITreeSelectProps["items"] = [...this];
+
+  static override from<T>(items: ArrayLike<T> | Iterable<T>): SpecificArray<T> {
+    const arr = new SpecificArray<T>();
+    for (const item of super.from(items)) {
+      arr.push(item);
+    }
+
+    return arr;
+  }
+
+  static updateChildrenCheckState(
+    array: SpecificArray<TTreeSelectItem>,
+    id: string | number,
+    isChecked: boolean,
+  ): void {
+    const selectedItem: TTreeSelectItem | undefined = array.findItem(id);
+
+    if (selectedItem) {
+      const myTree: SpecificArray<TTreeSelectItem> =
+        SpecificArray.from<TTreeSelectItem>([selectedItem]);
+
+      while (myTree.length) {
+        const currentNode: TTreeSelectItem | undefined = myTree.pop();
+        if (currentNode && currentNode.type === "simple-item") {
+          currentNode.isChecked = isChecked;
+        } else if (currentNode && currentNode.type === "accordion-item") {
+          currentNode.isChecked = isChecked;
+          currentNode.children?.forEach((child: TTreeSelectItem) => {
+            myTree.push(child);
+          });
+        }
+      }
+    }
+  }
+
+  static updateParentsCheckState(
+    array: SpecificArray<TTreeSelectItem>,
+    item: TTreeSelectItem,
+  ) {
+    const parentItem: TTreeSelectItem | undefined = array.findItem(
+      item.parentId,
+    );
+
+    const myStack = [parentItem];
+
+    while (myStack.length) {
+      const pItem: TTreeSelectItem | undefined = myStack.pop();
+      if (pItem?.type === "accordion-item") {
+        const isCheckedAllChild: boolean | undefined = pItem.children?.every(
+          (item) => item.isChecked,
+        );
+        if (isCheckedAllChild) {
+          pItem.isChecked = true;
+        } else {
+          pItem.isChecked = false;
+        }
+      }
+
+      if (pItem?.parentId) {
+        myStack.unshift(array.findItem(pItem.parentId));
+      }
+    }
+  }
+
+  findItem(
+    this: SpecificArray<TTreeSelectItem>,
+    id?: string | number,
+  ): TTreeSelectItem | undefined {
+    if (!id) return;
+
+    const myTree: SpecificArray<TTreeSelectItem> =
+      SpecificArray.from<TTreeSelectItem>(this);
 
     while (myTree.length) {
-      const currentNode: ITreeSelectProps["items"][number] | undefined =
-        myTree.pop();
+      const currentNode: TTreeSelectItem | undefined = myTree.pop();
 
       if (currentNode && currentNode.id === id) {
         return currentNode;
@@ -18,11 +87,9 @@ class SpecificArray extends Array {
         "children" in currentNode &&
         currentNode.children?.length
       ) {
-        currentNode.children.forEach(
-          (child: ITreeSelectProps["items"][number]) => {
-            myTree.push(child);
-          },
-        );
+        currentNode.children.forEach((child: TTreeSelectItem) => {
+          myTree.push(child);
+        });
       }
     }
 
