@@ -31,6 +31,7 @@ class SpecificArray<T> extends Array<T> {
           currentNode.isChecked = isChecked;
         } else if (currentNode && currentNode.type === "accordion-item") {
           currentNode.isChecked = isChecked;
+          currentNode.isIndeterminate = false;
           currentNode.children?.forEach((child: TTreeSelectItem) => {
             myTree.push(child);
           });
@@ -47,23 +48,56 @@ class SpecificArray<T> extends Array<T> {
       item.parentId,
     );
 
-    const myStack = [parentItem];
+    if (parentItem) {
+      const myQueue: SpecificArray<TTreeSelectItem> =
+        SpecificArray.from<TTreeSelectItem>([parentItem]);
 
-    while (myStack.length) {
-      const pItem: TTreeSelectItem | undefined = myStack.pop();
-      if (pItem?.type === "accordion-item") {
-        const isCheckedAllChild: boolean | undefined = pItem.children?.every(
-          (item) => item.isChecked,
-        );
-        if (isCheckedAllChild) {
-          pItem.isChecked = true;
-        } else {
-          pItem.isChecked = false;
+      while (myQueue.length) {
+        const pItem: TTreeSelectItem | undefined = myQueue.pop();
+        if (pItem?.type === "accordion-item") {
+          const isCheckedAllChild: boolean | undefined = pItem.children?.every(
+            (item) => item.isChecked,
+          );
+          if (isCheckedAllChild) {
+            pItem.isChecked = true;
+          } else {
+            pItem.isChecked = false;
+          }
+        }
+
+        if (pItem?.parentId) {
+          const parentItem = array.findItem(pItem.parentId);
+          if (parentItem) myQueue.unshift(parentItem);
         }
       }
+    }
+  }
 
-      if (pItem?.parentId) {
-        myStack.unshift(array.findItem(pItem.parentId));
+  static updateIndeterminateState(
+    array: SpecificArray<TTreeSelectItem>,
+    item: TTreeSelectItem,
+  ) {
+    const parentItem: TTreeSelectItem | undefined = array.findItem(
+      item.parentId,
+    );
+
+    if (parentItem) {
+      const myQueue: SpecificArray<TTreeSelectItem> =
+        SpecificArray.from<TTreeSelectItem>([parentItem]);
+
+      while (myQueue.length) {
+        const pItem: TTreeSelectItem | undefined = myQueue.pop();
+        if (pItem?.type === "accordion-item" && !pItem.isChecked) {
+          pItem.isIndeterminate = pItem.children?.some(
+            (child: TTreeSelectItem) =>
+              child.isChecked || child.isIndeterminate,
+          );
+
+          if (pItem?.parentId) {
+            const parentItem = array.findItem(pItem.parentId);
+            if (parentItem) myQueue.unshift(parentItem);
+          }
+        }
       }
     }
   }

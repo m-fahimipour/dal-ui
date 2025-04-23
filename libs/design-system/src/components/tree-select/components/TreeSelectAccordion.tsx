@@ -25,18 +25,7 @@ export function TreeSelectAccordion({
         accordionSummaryProps: item.accordionProps?.summaryProps,
       }}
       summary={(item) => (
-        <TreeSelectItem
-          item={{
-            type: item.type,
-            id: item.id,
-            label: item.label,
-            value: item.value,
-            isChecked: item.isChecked,
-            children: item.children,
-            itemProps: item.itemProps,
-          }}
-          onChangeHandler={onChangeHandler}
-        />
+        <TreeSelectItem item={item} onChangeHandler={onChangeHandler} />
       )}
     />
   );

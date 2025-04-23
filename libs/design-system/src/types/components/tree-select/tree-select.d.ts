@@ -13,8 +13,9 @@ interface ITreeSelectItemBase {
   value: string;
   isChecked: boolean;
   isDisabled?: boolean;
-  element?: ReactElement;
   parentId?: string | number;
+  element?: ReactElement;
+  isIndeterminate?: boolean;
   itemProps?: {
     wrapperProps?: TBlockProps;
     typographyProps?: TTypographyProps;

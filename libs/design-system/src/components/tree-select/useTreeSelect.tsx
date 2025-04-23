@@ -29,6 +29,8 @@ export function useTreeSelect({
 
     SpecificArray.updateParentsCheckState(dataRef.current, selectedItem);
 
+    SpecificArray.updateIndeterminateState(dataRef.current, selectedItem);
+
     dataRef.current = createTreeUI(dataRef.current);
     setUpdateUI((c) => c + 1);
   }

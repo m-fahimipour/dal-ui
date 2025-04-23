@@ -1,16 +1,13 @@
 import type { ChangeEvent, JSX, MouseEvent } from "react";
 
-import type {
-  ITreeSelectAccordionItem,
-  ITreeSelectSimpleItem,
-} from "../../../types/components/tree-select/tree-select";
+import type { TTreeSelectItem } from "../../../types/components/tree-select/tree-select";
 import { Block } from "../../block";
 import { Checkbox } from "../../checkbox";
 import { Typography } from "../../typography";
 
 interface ITreeSelectItem {
-  item: ITreeSelectSimpleItem | ITreeSelectAccordionItem;
-  onChangeHandler(item: ITreeSelectItem["item"]): void;
+  item: TTreeSelectItem;
+  onChangeHandler(item: TTreeSelectItem): void;
 }
 
 export function TreeSelectItem({
@@ -29,11 +26,7 @@ export function TreeSelectItem({
         checked={item.isChecked}
         disabled={item.isDisabled}
         {...(item.type === "accordion-item" && {
-          isIndeterminate: !item.isChecked
-            ? item.children?.some(
-                (child: ITreeSelectItem["item"]) => child.isChecked,
-              )
-            : false,
+          isIndeterminate: item.isIndeterminate,
         })}
         onClick={(e: MouseEvent) => e.stopPropagation()}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
