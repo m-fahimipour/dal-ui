@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
-declare module "design-system-tw/theme" {
+declare module "dal-ui/theme" {
   export function ThemeProvider({
     children,
   }: {

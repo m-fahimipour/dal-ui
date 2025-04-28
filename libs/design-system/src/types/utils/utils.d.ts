@@ -1,3 +1,3 @@
-declare module "design-system-tw/utils" {
+declare module "dal-ui/utils" {
   export function changeTheme(): void;
 }
