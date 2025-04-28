@@ -7,7 +7,7 @@ import type { TTypographyProps } from "../../types/components/typography/Typogra
 function Typography({
   component = "span",
   children,
-  variant,
+  variant = "caption1-regular",
   className,
   duiCn,
   ...rest
