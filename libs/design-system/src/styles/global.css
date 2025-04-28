@@ -1,5 +1,6 @@
 @import "./theme.css";
 @import "./button/button.css";
 @import "./checkbox/checkbox.css";
+@import "./typography/typography.css";
 /* because module-graph was removed from tailwind, i have to use @source for explicitly register library files for scanning  */
 @source "../../dist";

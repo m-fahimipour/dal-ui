@@ -1,0 +1,176 @@
+/* h utilities */
+@utility text-h1 {
+  font-size: clamp(--spacing(9), 5.5vw, --spacing(11.5));
+  font-weight: 700;
+}
+
+@utility text-h2 {
+  font-size: clamp(--spacing(8), 5vw, --spacing(10.25));
+  font-weight: 700;
+}
+
+@utility text-h3 {
+  font-size: clamp(--spacing(7), 4.48vw, --spacing(9));
+  font-weight: 700;
+}
+
+@utility text-h4 {
+  font-size: clamp(--spacing(6.25), 4.1vw, --spacing(8));
+  font-weight: 700;
+}
+
+@utility text-h5 {
+  font-size: clamp(--spacing(5.5), 4vw, --spacing(7.25));
+  font-weight: 700;
+}
+
+@utility text-h6 {
+  font-size: clamp(--spacing(5), 3.65vw, --spacing(6.5));
+  font-weight: 700;
+}
+
+/* ////////////////////////////////// */
+
+/* body1 */
+
+@utility body1-light {
+  font-size: clamp(--spacing(4.5), 3.15vw, --spacing(5.5));
+  font-weight: 300;
+}
+
+@utility body1-regular {
+  font-size: clamp(--spacing(4.5), 3.15vw, --spacing(5.5));
+  font-weight: 400;
+}
+
+@utility body1-medium {
+  font-size: clamp(--spacing(4.5), 3.15vw, --spacing(5.5));
+  font-weight: 500;
+}
+
+@utility body1-bold {
+  font-size: clamp(--spacing(4.5), 3.15vw, --spacing(5.5));
+  font-weight: 700;
+}
+
+/* ////////////////////////////////// */
+
+/* body2 */
+
+@utility body2-light {
+  font-size: clamp(--spacing(4), 2.9vw, --spacing(5));
+  font-weight: 300;
+}
+
+@utility body2-regular {
+  font-size: clamp(--spacing(4), 2.9vw, --spacing(5));
+  font-weight: 400;
+}
+
+@utility body2-medium {
+  font-size: clamp(--spacing(4), 2.9vw, --spacing(5));
+  font-weight: 500;
+}
+
+@utility body2-bold {
+  font-size: clamp(--spacing(4), 2.9vw, --spacing(5));
+  font-weight: 700;
+}
+
+/* ////////////////////////////////// */
+
+/* body3 */
+
+@utility body3-light {
+  font-size: clamp(--spacing(3.5), 2.6vw, --spacing(4.5));
+  font-weight: 300;
+}
+
+@utility body3-regular {
+  font-size: clamp(--spacing(3.5), 2.6vw, --spacing(4.5));
+  font-weight: 400;
+}
+
+@utility body3-medium {
+  font-size: clamp(--spacing(3.5), 2.6vw, --spacing(4.5));
+  font-weight: 500;
+}
+
+@utility body3-bold {
+  font-size: clamp(--spacing(3.5), 2.6vw, --spacing(4.5));
+  font-weight: 700;
+}
+
+/* ////////////////////////////////// */
+
+/* caption1 */
+
+@utility caption1-light {
+  font-size: clamp(--spacing(3), 2.3vw, --spacing(4));
+  font-weight: 300;
+}
+
+@utility caption1-regular {
+  font-size: clamp(--spacing(3), 2.3vw, --spacing(4));
+  font-weight: 400;
+}
+
+@utility caption1-medium {
+  font-size: clamp(--spacing(3), 2.3vw, --spacing(4));
+  font-weight: 500;
+}
+
+@utility caption1-bold {
+  font-size: clamp(--spacing(3), 2.3vw, --spacing(4));
+  font-weight: 700;
+}
+
+/* ////////////////////////////////// */
+
+/* caption2 */
+
+@utility caption2-light {
+  font-size: clamp(--spacing(2.75), 2vw, --spacing(3.5));
+  font-weight: 300;
+}
+
+@utility caption2-regular {
+  font-size: clamp(--spacing(2.75), 2vw, --spacing(3.5));
+  font-weight: 400;
+}
+
+@utility caption2-medium {
+  font-size: clamp(--spacing(2.75), 2vw, --spacing(3.5));
+  font-weight: 500;
+}
+
+@utility caption2-bold {
+  font-size: clamp(--spacing(2.75), 2vw, --spacing(3.5));
+  font-weight: 700;
+}
+
+/* ////////////////////////////////// */
+
+/* caption3 */
+
+@utility caption3-light {
+  font-size: clamp(--spacing(2.5), 1.7vw, --spacing(3));
+  font-weight: 300;
+}
+
+@utility caption3-regular {
+  font-size: clamp(--spacing(2.5), 1.7vw, --spacing(3));
+  font-weight: 400;
+}
+
+@utility caption3-medium {
+  font-size: clamp(--spacing(2.5), 1.7vw, --spacing(3));
+  font-weight: 500;
+}
+
+@utility caption3-bold {
+  font-size: clamp(--spacing(2.5), 1.7vw, --spacing(3));
+  font-weight: 700;
+}
+
+/* ////////////////////////////////// */
