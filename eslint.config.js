@@ -23,6 +23,8 @@ export default tslint.config(
       "libs/**/src/**/*.[jt]s",
       "apps/**/src/**/*.[jt]sx",
       "apps/**/src/**/*.[jt]s",
+      "docs/**/src/**/*.[jt]sx",
+      "docs/**/src/**/*.[jt]s",
     ],
     languageOptions: {
       ecmaVersion: "latest", //default latest
@@ -232,11 +234,13 @@ export default tslint.config(
   //  check folder name and file
   {
     ignores: [
-      "apps/react-vite/src/**/main.tsx",
-      "apps/react-vite/**/*.d.ts",
+      "apps/**/src/**/main.tsx",
+      "apps/**/*.d.ts",
+      "docs/**/src/**/main.tsx",
+      "docs/**/*.d.ts",
       "libs/design-system/**/*.d.ts",
     ],
-    files: ["libs/**/src/**/*", "apps/**/src/**/*"],
+    files: ["libs/**/src/**/*", "apps/**/src/**/*", "docs/**/src/**/*"],
     plugins: {
       "check-file": checkFile,
     },
@@ -259,5 +263,5 @@ export default tslint.config(
         },
       ],
     },
-  }
+  },
 );
