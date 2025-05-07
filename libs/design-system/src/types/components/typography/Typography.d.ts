@@ -2,7 +2,6 @@ import type { JSX } from "react";
 
 import type { IBase } from "../common";
 import type {
-  TAdaptiveBreakpointsArray,
   TElementAttributes,
   TFilterFalseValue,
 } from "../global";

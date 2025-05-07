@@ -22,4 +22,6 @@ function Typography({
   );
 }
 
+Typography.displayName = "Typography";
+
 export default Typography;
