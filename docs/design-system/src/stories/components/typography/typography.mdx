@@ -1,0 +1,40 @@
+import {
+  Meta,
+  Canvas,
+  Source,
+  Title,
+  Description,
+  Controls,
+  ArgTypes,
+} from "@storybook/blocks";
+
+import * as TypographyStories from "./typography.stories";
+
+<Meta
+  of={TypographyStories}
+  args={{ variant: "caption1-regular", component: "span" }}
+/>
+
+<Title />
+
+<Description />
+
+## [<font color="black">**Changing Semantic Element**</font>](#changing-semantic-element)
+
+<Description of={TypographyStories.SemanticElements} />
+
+<Canvas of={TypographyStories.SemanticElements} />
+
+## [<font color="black">**Variant**</font>](#variant)
+
+<Description of={TypographyStories.Variants} />
+
+<Canvas of={TypographyStories.Variants} />
+
+## [<font color="black">**Customization**</font>](#customization)
+
+<Description of={TypographyStories.Customization} />
+
+## [<font color="black">**Props**</font>](#props)
+
+<ArgTypes of={TypographyStories} sort="requiredFirst" />
