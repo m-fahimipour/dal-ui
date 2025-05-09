@@ -67,6 +67,9 @@ type TStory = StoryObj<typeof meta>;
 
 export const Variants: TStory = {
   parameters: {
+    controls: {
+      disable: true,
+    },
     docs: {
       source: {
         // for creating custom code for show
@@ -148,6 +151,9 @@ export const SemanticElements: TStory = {
 
 export const Customization: TStory = {
   parameters: {
+    controls: {
+      disable: true,
+    },
     docs: {
       description: {
         story: typographyDescriptions.customizationDescription,
