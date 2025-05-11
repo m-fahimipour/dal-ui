@@ -11,14 +11,6 @@
       "import": "./index.js",
       "default": "./index.js"
     },
-    "./theme": {
-      "import": "./dist/theme/theme.js",
-      "default": "./dist/theme/theme.js"
-    },
-    "./utils": {
-      "import": "./dist/utils/utils.js",
-      "default": "./dist/utils/utils.js"
-    },
     "./styles/global.css": "./dist/styles/global.css"
   },
   "files": [
@@ -33,6 +25,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "@dui/theme": "*"
+  },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
