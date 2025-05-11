@@ -38,13 +38,9 @@ module.exports = {
       import: "./src/components/tree-select/index.ts",
       filename: "./components/tree-select/[name].bundler.js",
     },
-    theme: {
-      import: "./src/theme/theme.ts",
-      filename: "./theme/theme.js",
-    },
-    utils: {
-      import: "./src/utils/index.ts",
-      filename: "./utils/utils.js",
+    functions: {
+      import: "./src/functions/index.ts",
+      filename: "./functions/index.js",
     },
   },
   output: {
@@ -87,14 +83,6 @@ module.exports = {
           to: path.resolve(__dirname, "dist/styles"),
         },
         {
-          from: path.resolve(__dirname, "src/types/theme"),
-          to: path.resolve(__dirname, "dist/theme"), // default value is output.path
-        },
-        {
-          from: path.resolve(__dirname, "src/types/utils"),
-          to: path.resolve(__dirname, "dist/utils"),
-        },
-        {
           from: path.resolve(__dirname, "src/types/components"),
           to: path.resolve(__dirname, "dist/types/"),
         },
@@ -107,8 +95,12 @@ module.exports = {
     "react-dom": "react-dom",
     tailwindcss: "tailwindcss",
     "tailwind-merge": "tailwind-merge",
+    "@dui/theme": "@dui/theme",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      "dal-ui/theme": path.resolve(__dirname, "src/theme/index.ts"),
+    },
   },
 };
