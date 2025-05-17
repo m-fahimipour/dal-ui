@@ -1,11 +1,12 @@
 {
-  "name": "dal-ui",
+  "name": "@dui/components",
   "version": "0.0.11",
   "type": "module",
   "private": false,
   "main": "index.js",
   "module": "index.js",
   "types": "index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": "./index.js",
