@@ -13,7 +13,9 @@
     "build:vite": "npm run build -w ./apps/react-vite",
     "docs:dui": "npm run storybook -w ./docs/design-system",
     "dev:dui": "npm run dev -w ./libs/design-system",
-    "build:dui": "npm run build -w ./libs/design-system"
+    "build:dui": "npm run build -w ./libs/design-system",
+    "dev:dui/theme": "npm run dev -w ./libs/theme",
+    "build:dui/theme": "npm run build -w ./libs/theme"
   },
   "dependencies": {
     "react": "^19.0.0",

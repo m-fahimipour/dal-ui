@@ -1,6 +1,7 @@
-import { useLayoutEffect, type ReactNode } from "react";
+import { useLayoutEffect, type JSX } from "react";
+import type { IColorModeProvider } from "../../types/color-mode-provider";
 
-function ThemeProvider({ children }: { children: ReactNode[] }) {
+function ColorModeProvider({ children }: IColorModeProvider): JSX.Element {
   useLayoutEffect(() => {
     if (window) {
       const isDarkTheme = window.matchMedia(
@@ -23,4 +24,4 @@ function ThemeProvider({ children }: { children: ReactNode[] }) {
   return <>{children}</>;
 }
 
-export default ThemeProvider;
+export default ColorModeProvider;
